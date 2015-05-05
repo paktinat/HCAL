@@ -1,0 +1,610 @@
+DEBUG 2014-10-24 10:43:32,069: 	 Executing command: 'submit'
+DEBUG 2014-10-24 10:43:32,075: 	 Found /afs/cern.ch/user/k/kkotheka/.crab3 file
+DEBUG 2014-10-24 10:43:32,093: 	 Checking credentials
+DEBUG 2014-10-24 10:43:32,094: 	 Found proxy file /tmp/x509up_u72023
+DEBUG 2014-10-24 10:43:32,095: 	 Getting proxy life time left
+DEBUG 2014-10-24 10:43:33,002: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u72023 -timeleft
+ output : 595868
+
+ error: 
+ retcode : 0
+DEBUG 2014-10-24 10:43:33,910: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u72023 -actimeleft
+ output : 595867
+
+ error: 
+ retcode : 0
+DEBUG 2014-10-24 10:43:33,911: 	 Proxy valid for 165:31:08 hours
+INFO 2014-10-24 10:43:33,911: 	 Will use configuration file crabConfig.py
+DEBUG 2014-10-24 10:43:33,911: 	 Loading configuration
+DEBUG 2014-10-24 10:43:34,039: 	 Executing : 
+ command : openssl x509 -in ~/.globus/usercert.pem -subject -noout
+ output : subject= /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=kkotheka/CN=760766/CN=Kunal Kisan Kothekar
+
+ error: 
+ retcode : 0
+DEBUG 2014-10-24 10:43:34,040: 	 Checking credentials
+DEBUG 2014-10-24 10:43:34,040: 	 Found proxy file /tmp/x509up_u72023
+DEBUG 2014-10-24 10:43:34,040: 	 Getting proxy life time left
+DEBUG 2014-10-24 10:43:34,947: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u72023 -timeleft
+ output : 595866
+
+ error: 
+ retcode : 0
+DEBUG 2014-10-24 10:43:35,857: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u72023 -actimeleft
+ output : 595865
+
+ error: 
+ retcode : 0
+DEBUG 2014-10-24 10:43:35,858: 	 Proxy valid for 165:31:06 hours
+DEBUG 2014-10-24 10:43:36,768: 	 Executing : 
+ command : env X509_USER_PROXY=/tmp/x509up_u72023 voms-proxy-info -fqan
+ output : /cms/Role=NULL/Capability=NULL
+
+ error: 
+ retcode : 0
+DEBUG 2014-10-24 10:43:37,425: 	 Registering user credentials for server /DC=ch/DC=cern/OU=computers/CN=vocms(24[34]|3[136]|21|045).cern.ch
+DEBUG 2014-10-24 10:43:37,540: 	 Executing : 
+ command : openssl x509 -in ~/.globus/usercert.pem -subject -noout
+ output : subject= /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=kkotheka/CN=760766/CN=Kunal Kisan Kothekar
+
+ error: 
+ retcode : 0
+DEBUG 2014-10-24 10:43:37,541: 	 Getting myproxy life time left for myproxy.cern.ch
+DEBUG 2014-10-24 10:43:37,541: 	 Calculating hash of /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=kkotheka/CN=760766/CN=Kunal Kisan Kothekar_cmsweb.cern.ch for credential name
+DEBUG 2014-10-24 10:43:38,048: 	 Executing : 
+ command : myproxy-info -l 245ef9a0d7f7aaae89f3821a5b6107175de3cff5 -s myproxy.cern.ch
+ output : username: 245ef9a0d7f7aaae89f3821a5b6107175de3cff5
+owner: /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=kkotheka/CN=760766/CN=Kunal Kisan Kothekar
+  renewal policy: /DC=ch/DC=cern/OU=computers/CN=vocms(24[34]|3[136]|21|045).cern.ch
+  trusted retrieval policy: /DC=ch/DC=cern/OU=computers/CN=vocms(24[34]|3[136]|21|045).cern.ch
+  timeleft: 415:47:37  (17.3 days)
+
+ error: 
+ retcode : 0
+DEBUG 2014-10-24 10:43:38,050: 	 Myproxy is valid: 1496857
+DEBUG 2014-10-24 10:43:38,050: 	 Command use: submit
+DEBUG 2014-10-24 10:43:38,050: 	 Options use: ['crabConfig.py']
+DEBUG 2014-10-24 10:43:38,344: 	 CRABClient version: 3.3.10 Compatible
+DEBUG 2014-10-24 10:43:38,344: 	 Instance is prod
+DEBUG 2014-10-24 10:43:38,344: 	 Server base url is cmsweb.cern.ch
+DEBUG 2014-10-24 10:43:38,344: 	 Command url /crabserver/prod/workflow
+DEBUG 2014-10-24 10:43:38,344: 	 Started submission
+DEBUG 2014-10-24 10:43:38,345: 	 Working on /afs/cern.ch/work/k/kkotheka/public/HCAL_HcalHPDNoise_RUN227489/CMSSW_7_2_0_pre3/src/HcalNoise/HcalNoiseAnalyzer/config/crab_projects/crab_Cosmics_Tree_2014-v3_RAW_HcalHPDNoise_227489
+DEBUG 2014-10-24 10:43:38,640: 	 Found CMSSW_7_2_0_pre3 for slc6_amd64_gcc481 with base /afs/cern.ch/work/k/kkotheka/public/HCAL_HcalHPDNoise_RUN227489/CMSSW_7_2_0_pre3
+DEBUG 2014-10-24 10:43:38,675: 	 UNIQUE NAME: tarUUID d6ad6c34-02a4-4619-a869-ffe3ec1dacd3 
+DEBUG 2014-10-24 10:43:38,676: 	 self.config: from WMCore.Configuration import Configuration
+config = Configuration()
+config.section_('General')
+config.General.workArea = 'crab_projects'
+config.General.requestName = 'Cosmics_Tree_2014-v3_RAW_HcalHPDNoise_227489'
+config.General.serverUrl = 'cmsweb.cern.ch'
+config.section_('JobType')
+config.JobType.psetName = 'HcalNoiseTree_RECO_RAW2DIGI_RECO_Cosmics.py'
+config.JobType.pluginName = 'Analysis'
+config.JobType.capath = '/etc/grid-security/certificates/'
+config.JobType.proxyfilename = '/tmp/x509up_u72023'
+config.JobType.filecacheurl = 'https://cmsweb.cern.ch/crabcache'
+config.section_('Data')
+config.Data.inputDataset = '/HcalHPDNoise/Commissioning2014-v3/RAW'
+config.Data.publication = False
+config.Data.unitsPerJob = 20
+config.Data.splitting = 'LumiBased'
+config.Data.dbsUrl = 'global'
+config.Data.runRange = '227489'
+config.section_('Site')
+config.Site.storageSite = 'T2_IN_TIFR'
+
+DEBUG 2014-10-24 10:43:38,676: 	 self.config.JobType.psetName: HcalNoiseTree_RECO_RAW2DIGI_RECO_Cosmics.py
+DEBUG 2014-10-24 10:43:38,676: 	 Importing CMSSW config HcalNoiseTree_RECO_RAW2DIGI_RECO_Cosmics.py
+DEBUG 2014-10-24 10:43:45,246: 	 The following EDM output files will be collected: []
+DEBUG 2014-10-24 10:43:45,246: 	 The following TFile output files will be collected: ['NoiseTree_Commissionig2014_HcalHPDNoise_v3_227489.root']
+DEBUG 2014-10-24 10:43:45,246: 	 The following user output files will be collected: []
+DEBUG 2014-10-24 10:43:45,246: 	 Writing CMSSW config to /afs/cern.ch/work/k/kkotheka/public/HCAL_HcalHPDNoise_RUN227489/CMSSW_7_2_0_pre3/src/HcalNoise/HcalNoiseAnalyzer/config/crab_projects/crab_Cosmics_Tree_2014-v3_RAW_HcalHPDNoise_227489/inputs/CMSSW_cfg.py
+DEBUG 2014-10-24 10:43:48,236: 	 Found CMSSW_7_2_0_pre3 for slc6_amd64_gcc481 with base /afs/cern.ch/work/k/kkotheka/public/HCAL_HcalHPDNoise_RUN227489/CMSSW_7_2_0_pre3
+DEBUG 2014-10-24 10:43:48,236: 	 Making tarball in /afs/cern.ch/work/k/kkotheka/public/HCAL_HcalHPDNoise_RUN227489/CMSSW_7_2_0_pre3/src/HcalNoise/HcalNoiseAnalyzer/config/crab_projects/crab_Cosmics_Tree_2014-v3_RAW_HcalHPDNoise_227489/inputs/d6ad6c34-02a4-4619-a869-ffe3ec1dacd3default.tgz
+DEBUG 2014-10-24 10:43:48,238: 	  checking directory /afs/cern.ch/work/k/kkotheka/public/HCAL_HcalHPDNoise_RUN227489/CMSSW_7_2_0_pre3/lib
+DEBUG 2014-10-24 10:43:48,238: 	  adding directory /afs/cern.ch/work/k/kkotheka/public/HCAL_HcalHPDNoise_RUN227489/CMSSW_7_2_0_pre3/lib to tarball
+DEBUG 2014-10-24 10:43:48,332: 	  checking directory /afs/cern.ch/work/k/kkotheka/public/HCAL_HcalHPDNoise_RUN227489/CMSSW_7_2_0_pre3/module
+DEBUG 2014-10-24 10:43:48,844: 	 tgz contents: [('lib', 0, 1414139136, 'kkotheka'), ('lib/slc6_amd64_gcc481', 0, 1414140035, 'kkotheka'), ('lib/slc6_amd64_gcc481/pluginHcalNoiseHcalNoiseAnalyzer.so', 297489, 1414140031, 'kkotheka'), ('lib/slc6_amd64_gcc481/HcalNoiseHcalNoiseAnalyzer.edmplugin', 43, 1414140031, 'kkotheka'), ('lib/slc6_amd64_gcc481/.edmplugincache', 176, 1414140035, 'kkotheka'), ('PSet.py', 101, 1414140228, 'kkotheka'), ('PSet.pkl', 2151815, 1414140228, 'kkotheka'), ('debug/originalPSet.py', 7237, 1414139909, 'kkotheka'), ('debug/crabConfig.py', 889, 1414140228, 'kkotheka')]
+DEBUG 2014-10-24 10:43:48,844: 	 MD5 checksum: 981cd8e62856392a1869da8fde41a136
+DEBUG 2014-10-24 10:43:48,853: 	  uploading archive to cache /afs/cern.ch/work/k/kkotheka/public/HCAL_HcalHPDNoise_RUN227489/CMSSW_7_2_0_pre3/src/HcalNoise/HcalNoiseAnalyzer/config/crab_projects/crab_Cosmics_Tree_2014-v3_RAW_HcalHPDNoise_227489/inputs/d6ad6c34-02a4-4619-a869-ffe3ec1dacd3default.tgz 
+DEBUG 2014-10-24 10:43:49,162: 	 Result uploading input files: ('https://cmsweb.cern.ch/crabcache', '223aaf87eb1bfc5a0b7db1e413c1abea987f07de631843019f48841b23443a0a.tar.gz', '981cd8e62856392a1869da8fde41a136') 
+INFO 2014-10-24 10:43:49,164: 	 Sending the request to the server
+DEBUG 2014-10-24 10:43:49,164: 	 Submitting {'ignorelocality': 0, 'workflow': 'crab_Cosmics_Tree_2014-v3_RAW_HcalHPDNoise_227489', 'adduserfiles': [], 'publishname': '981cd8e62856392a1869da8fde41a136', 'savelogsflag': 0, 'jobarch': 'slc6_amd64_gcc481', 'lumis': ['1,268435455'], 'nonprodsw': 0, 'tfileoutfiles': ['NoiseTree_Commissionig2014_HcalHPDNoise_v3_227489.root'], 'asyncdest': 'T2_IN_TIFR', 'oneEventMode': 0, 'algoargs': 20, 'saveoutput': 1, 'addoutputfiles': [], 'cachefilename': '223aaf87eb1bfc5a0b7db1e413c1abea987f07de631843019f48841b23443a0a.tar.gz', 'runs': ['227489'], 'publication': 0, 'splitalgo': 'LumiBased', 'publishdbsurl': 'https://cmsweb.cern.ch/dbs/prod/phys03/DBSWriter', 'jobsw': 'CMSSW_7_2_0_pre3', 'dbsurl': 'https://cmsweb.cern.ch/dbs/prod/global/DBSReader', 'totalunits': 0, 'edmoutfiles': [], 'cacheurl': 'https://cmsweb.cern.ch/crabcache', 'inputdata': '/HcalHPDNoise/Commissioning2014-v3/RAW', 'jobtype': 'Analysis'} 
+DEBUG 2014-10-24 10:43:49,164: 	 Encoded submit request: ignorelocality=0&workflow=crab_Cosmics_Tree_2014-v3_RAW_HcalHPDNoise_227489&publishname=981cd8e62856392a1869da8fde41a136&savelogsflag=0&jobarch=slc6_amd64_gcc481&nonprodsw=0&asyncdest=T2_IN_TIFR&oneEventMode=0&algoargs=20&saveoutput=1&cachefilename=223aaf87eb1bfc5a0b7db1e413c1abea987f07de631843019f48841b23443a0a.tar.gz&publication=0&splitalgo=LumiBased&publishdbsurl=https%3A%2F%2Fcmsweb.cern.ch%2Fdbs%2Fprod%2Fphys03%2FDBSWriter&jobsw=CMSSW_7_2_0_pre3&dbsurl=https%3A%2F%2Fcmsweb.cern.ch%2Fdbs%2Fprod%2Fglobal%2FDBSReader&totalunits=0&cacheurl=https%3A%2F%2Fcmsweb.cern.ch%2Fcrabcache&inputdata=%2FHcalHPDNoise%2FCommissioning2014-v3%2FRAW&jobtype=Analysis&tfileoutfiles=NoiseTree_Commissionig2014_HcalHPDNoise_v3_227489.root&runs=227489&lumis=1%2C268435455
+DEBUG 2014-10-24 10:43:49,502: 	 Result: {'result': [{'RequestName': '141024_084349_crab3test-3:kkotheka_crab_Cosmics_Tree_2014-v3_RAW_HcalHPDNoise_227489'}]}
+INFO 2014-10-24 10:43:49,505: 	 Success: Your task has been delivered to the CRAB3 server.
+INFO 2014-10-24 10:43:49,505: 	 Task name: 141024_084349_crab3test-3:kkotheka_crab_Cosmics_Tree_2014-v3_RAW_HcalHPDNoise_227489
+INFO 2014-10-24 10:43:49,505: 	 Please use 'crab status' to check how the submission process proceed
+DEBUG 2014-10-24 10:43:49,505: 	 About to return
+DEBUG 2014-10-24 10:46:18,968: 	 Executing command: 'status'
+DEBUG 2014-10-24 10:46:18,972: 	 Found /afs/cern.ch/user/k/kkotheka/.crab3 file
+DEBUG 2014-10-24 10:46:19,000: 	 Checking credentials
+DEBUG 2014-10-24 10:46:19,001: 	 Found proxy file /tmp/x509up_u72023
+DEBUG 2014-10-24 10:46:19,001: 	 Getting proxy life time left
+DEBUG 2014-10-24 10:46:20,011: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u72023 -timeleft
+ output : 595701
+
+ error: 
+ retcode : 0
+DEBUG 2014-10-24 10:46:20,920: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u72023 -actimeleft
+ output : 595700
+
+ error: 
+ retcode : 0
+DEBUG 2014-10-24 10:46:20,920: 	 Proxy valid for 165:28:21 hours
+DEBUG 2014-10-24 10:46:21,038: 	 Executing : 
+ command : openssl x509 -in ~/.globus/usercert.pem -subject -noout
+ output : subject= /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=kkotheka/CN=760766/CN=Kunal Kisan Kothekar
+
+ error: 
+ retcode : 0
+DEBUG 2014-10-24 10:46:21,039: 	 Checking credentials
+DEBUG 2014-10-24 10:46:21,039: 	 Found proxy file /tmp/x509up_u72023
+DEBUG 2014-10-24 10:46:21,039: 	 Getting proxy life time left
+DEBUG 2014-10-24 10:46:21,949: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u72023 -timeleft
+ output : 595699
+
+ error: 
+ retcode : 0
+DEBUG 2014-10-24 10:46:22,858: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u72023 -actimeleft
+ output : 595698
+
+ error: 
+ retcode : 0
+DEBUG 2014-10-24 10:46:22,858: 	 Proxy valid for 165:28:19 hours
+DEBUG 2014-10-24 10:46:23,766: 	 Executing : 
+ command : env X509_USER_PROXY=/tmp/x509up_u72023 voms-proxy-info -fqan
+ output : /cms/Role=NULL/Capability=NULL
+
+ error: 
+ retcode : 0
+DEBUG 2014-10-24 10:46:23,928: 	 Registering user credentials for server /DC=ch/DC=cern/OU=computers/CN=vocms(24[34]|3[136]|21|045).cern.ch
+DEBUG 2014-10-24 10:46:24,043: 	 Executing : 
+ command : openssl x509 -in ~/.globus/usercert.pem -subject -noout
+ output : subject= /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=kkotheka/CN=760766/CN=Kunal Kisan Kothekar
+
+ error: 
+ retcode : 0
+DEBUG 2014-10-24 10:46:24,044: 	 Getting myproxy life time left for myproxy.cern.ch
+DEBUG 2014-10-24 10:46:24,044: 	 Calculating hash of /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=kkotheka/CN=760766/CN=Kunal Kisan Kothekar_cmsweb.cern.ch for credential name
+DEBUG 2014-10-24 10:46:24,450: 	 Executing : 
+ command : myproxy-info -l 245ef9a0d7f7aaae89f3821a5b6107175de3cff5 -s myproxy.cern.ch
+ output : username: 245ef9a0d7f7aaae89f3821a5b6107175de3cff5
+owner: /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=kkotheka/CN=760766/CN=Kunal Kisan Kothekar
+  renewal policy: /DC=ch/DC=cern/OU=computers/CN=vocms(24[34]|3[136]|21|045).cern.ch
+  trusted retrieval policy: /DC=ch/DC=cern/OU=computers/CN=vocms(24[34]|3[136]|21|045).cern.ch
+  timeleft: 415:44:50  (17.3 days)
+
+ error: 
+ retcode : 0
+DEBUG 2014-10-24 10:46:24,452: 	 Myproxy is valid: 1496690
+DEBUG 2014-10-24 10:46:24,452: 	 Command use: status
+DEBUG 2014-10-24 10:46:24,452: 	 Options use: ['crab_projects/crab_Cosmics_Tree_2014-v3_RAW_HcalHPDNoise_227489/']
+DEBUG 2014-10-24 10:46:24,693: 	 CRABClient version: 3.3.10 Compatible
+DEBUG 2014-10-24 10:46:24,694: 	 Instance is prod
+DEBUG 2014-10-24 10:46:24,694: 	 Server base url is cmsweb.cern.ch
+DEBUG 2014-10-24 10:46:24,694: 	 Command url /crabserver/prod/workflow
+DEBUG 2014-10-24 10:46:24,694: 	 Looking up detailed status of task 141024_084349_crab3test-3:kkotheka_crab_Cosmics_Tree_2014-v3_RAW_HcalHPDNoise_227489
+DEBUG 2014-10-24 10:46:24,831: 	 {'status': 'QUEUED', 'saveLogs': 'F', 'totalJobdefs': 0, 'jobSetID': '', 'jobsPerStatus': {}, 'taskFailureMsg': '', 'failedJobdefs': 0, 'jobdefErrors': [], 'jobList': []}
+INFO 2014-10-24 10:46:24,831: 	 Task name:			141024_084349_crab3test-3:kkotheka_crab_Cosmics_Tree_2014-v3_RAW_HcalHPDNoise_227489
+INFO 2014-10-24 10:46:24,831: 	 Task status:			QUEUED
+INFO 2014-10-24 10:46:24,831: 	 
+ERROR 2014-10-24 10:46:24,831: 	 No publication information available yet
+INFO 2014-10-24 10:46:24,831: 	 
+No jobs created yet!
+DEBUG 2014-10-24 10:48:05,675: 	 Executing command: 'status'
+DEBUG 2014-10-24 10:48:05,680: 	 Found /afs/cern.ch/user/k/kkotheka/.crab3 file
+DEBUG 2014-10-24 10:48:05,697: 	 Checking credentials
+DEBUG 2014-10-24 10:48:05,697: 	 Found proxy file /tmp/x509up_u72023
+DEBUG 2014-10-24 10:48:05,697: 	 Getting proxy life time left
+DEBUG 2014-10-24 10:48:06,606: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u72023 -timeleft
+ output : 595594
+
+ error: 
+ retcode : 0
+DEBUG 2014-10-24 10:48:07,513: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u72023 -actimeleft
+ output : 595593
+
+ error: 
+ retcode : 0
+DEBUG 2014-10-24 10:48:07,514: 	 Proxy valid for 165:26:34 hours
+DEBUG 2014-10-24 10:48:07,632: 	 Executing : 
+ command : openssl x509 -in ~/.globus/usercert.pem -subject -noout
+ output : subject= /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=kkotheka/CN=760766/CN=Kunal Kisan Kothekar
+
+ error: 
+ retcode : 0
+DEBUG 2014-10-24 10:48:07,633: 	 Checking credentials
+DEBUG 2014-10-24 10:48:07,633: 	 Found proxy file /tmp/x509up_u72023
+DEBUG 2014-10-24 10:48:07,633: 	 Getting proxy life time left
+DEBUG 2014-10-24 10:48:08,547: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u72023 -timeleft
+ output : 595592
+
+ error: 
+ retcode : 0
+DEBUG 2014-10-24 10:48:09,457: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u72023 -actimeleft
+ output : 595591
+
+ error: 
+ retcode : 0
+DEBUG 2014-10-24 10:48:09,457: 	 Proxy valid for 165:26:32 hours
+DEBUG 2014-10-24 10:48:10,365: 	 Executing : 
+ command : env X509_USER_PROXY=/tmp/x509up_u72023 voms-proxy-info -fqan
+ output : /cms/Role=NULL/Capability=NULL
+
+ error: 
+ retcode : 0
+DEBUG 2014-10-24 10:48:10,529: 	 Registering user credentials for server /DC=ch/DC=cern/OU=computers/CN=vocms(24[34]|3[136]|21|045).cern.ch
+DEBUG 2014-10-24 10:48:10,645: 	 Executing : 
+ command : openssl x509 -in ~/.globus/usercert.pem -subject -noout
+ output : subject= /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=kkotheka/CN=760766/CN=Kunal Kisan Kothekar
+
+ error: 
+ retcode : 0
+DEBUG 2014-10-24 10:48:10,645: 	 Getting myproxy life time left for myproxy.cern.ch
+DEBUG 2014-10-24 10:48:10,645: 	 Calculating hash of /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=kkotheka/CN=760766/CN=Kunal Kisan Kothekar_cmsweb.cern.ch for credential name
+DEBUG 2014-10-24 10:48:11,052: 	 Executing : 
+ command : myproxy-info -l 245ef9a0d7f7aaae89f3821a5b6107175de3cff5 -s myproxy.cern.ch
+ output : username: 245ef9a0d7f7aaae89f3821a5b6107175de3cff5
+owner: /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=kkotheka/CN=760766/CN=Kunal Kisan Kothekar
+  renewal policy: /DC=ch/DC=cern/OU=computers/CN=vocms(24[34]|3[136]|21|045).cern.ch
+  trusted retrieval policy: /DC=ch/DC=cern/OU=computers/CN=vocms(24[34]|3[136]|21|045).cern.ch
+  timeleft: 415:43:03  (17.3 days)
+
+ error: 
+ retcode : 0
+DEBUG 2014-10-24 10:48:11,054: 	 Myproxy is valid: 1496583
+DEBUG 2014-10-24 10:48:11,054: 	 Command use: status
+DEBUG 2014-10-24 10:48:11,054: 	 Options use: ['crab_projects/crab_Cosmics_Tree_2014-v3_RAW_HcalHPDNoise_227489/']
+DEBUG 2014-10-24 10:48:11,192: 	 CRABClient version: 3.3.10 Compatible
+DEBUG 2014-10-24 10:48:11,192: 	 Instance is prod
+DEBUG 2014-10-24 10:48:11,192: 	 Server base url is cmsweb.cern.ch
+DEBUG 2014-10-24 10:48:11,192: 	 Command url /crabserver/prod/workflow
+DEBUG 2014-10-24 10:48:11,192: 	 Looking up detailed status of task 141024_084349_crab3test-3:kkotheka_crab_Cosmics_Tree_2014-v3_RAW_HcalHPDNoise_227489
+DEBUG 2014-10-24 10:48:12,094: 	 {'status': 'SUBMITTED', 'totalJobdefs': 0, 'jobSetID': '141024_084349_crab3test-3:kkotheka_crab_Cosmics_Tree_2014-v3_RAW_HcalHPDNoise_227489', 'publication': {}, 'jobsPerStatus': {'running': 5}, 'taskFailureMsg': '', 'failedJobdefs': 0, 'ASOURL': 'https://cmsweb.cern.ch/couchdb', 'jobList': [['running', 1], ['running', 3], ['running', 2], ['running', 5], ['running', 4]], 'jobs': {'1': {'State': 'running'}, '3': {'State': 'running'}, '2': {'State': 'running'}, '5': {'State': 'running'}, '4': {'State': 'running'}}, 'jobdefErrors': [], 'outdatasets': [], 'pool': {}}
+INFO 2014-10-24 10:48:12,094: 	 Task name:			141024_084349_crab3test-3:kkotheka_crab_Cosmics_Tree_2014-v3_RAW_HcalHPDNoise_227489
+INFO 2014-10-24 10:48:12,094: 	 Task status:			SUBMITTED
+INFO 2014-10-24 10:48:12,094: 	 Glidemon monitoring URL:	http://glidemon.web.cern.ch/glidemon/jobs.php?taskname=141024_084349_crab3test-3%3Akkotheka_crab_Cosmics_Tree_2014-v3_RAW_HcalHPDNoise_227489
+INFO 2014-10-24 10:48:12,094: 	 Dashboard monitoring URL:	http://dashb-cms-job.cern.ch/dashboard/templates/task-analysis/#user=kkotheka&refresh=0&table=Jobs&p=1&records=25&activemenu=2&status=&site=&tid=141024_084349_crab3test-3%3Akkotheka_crab_Cosmics_Tree_2014-v3_RAW_HcalHPDNoise_227489
+INFO 2014-10-24 10:48:12,094: 	 Details:			running       100.0% (5/5)
+INFO 2014-10-24 10:48:12,095: 	 
+ERROR 2014-10-24 10:48:12,095: 	 No publication information available yet
+DEBUG 2014-10-24 10:48:59,482: 	 Executing command: 'status'
+DEBUG 2014-10-24 10:48:59,485: 	 Found /afs/cern.ch/user/k/kkotheka/.crab3 file
+DEBUG 2014-10-24 10:48:59,496: 	 Checking credentials
+DEBUG 2014-10-24 10:48:59,497: 	 Found proxy file /tmp/x509up_u72023
+DEBUG 2014-10-24 10:48:59,497: 	 Getting proxy life time left
+DEBUG 2014-10-24 10:49:00,404: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u72023 -timeleft
+ output : 595540
+
+ error: 
+ retcode : 0
+DEBUG 2014-10-24 10:49:01,311: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u72023 -actimeleft
+ output : 595539
+
+ error: 
+ retcode : 0
+DEBUG 2014-10-24 10:49:01,312: 	 Proxy valid for 165:25:40 hours
+DEBUG 2014-10-24 10:49:01,434: 	 Executing : 
+ command : openssl x509 -in ~/.globus/usercert.pem -subject -noout
+ output : subject= /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=kkotheka/CN=760766/CN=Kunal Kisan Kothekar
+
+ error: 
+ retcode : 0
+DEBUG 2014-10-24 10:49:01,434: 	 Checking credentials
+DEBUG 2014-10-24 10:49:01,434: 	 Found proxy file /tmp/x509up_u72023
+DEBUG 2014-10-24 10:49:01,434: 	 Getting proxy life time left
+DEBUG 2014-10-24 10:49:02,342: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u72023 -timeleft
+ output : 595538
+
+ error: 
+ retcode : 0
+DEBUG 2014-10-24 10:49:03,250: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u72023 -actimeleft
+ output : 595537
+
+ error: 
+ retcode : 0
+DEBUG 2014-10-24 10:49:03,251: 	 Proxy valid for 165:25:38 hours
+DEBUG 2014-10-24 10:49:04,158: 	 Executing : 
+ command : env X509_USER_PROXY=/tmp/x509up_u72023 voms-proxy-info -fqan
+ output : /cms/Role=NULL/Capability=NULL
+
+ error: 
+ retcode : 0
+DEBUG 2014-10-24 10:49:04,314: 	 Registering user credentials for server /DC=ch/DC=cern/OU=computers/CN=vocms(24[34]|3[136]|21|045).cern.ch
+DEBUG 2014-10-24 10:49:04,431: 	 Executing : 
+ command : openssl x509 -in ~/.globus/usercert.pem -subject -noout
+ output : subject= /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=kkotheka/CN=760766/CN=Kunal Kisan Kothekar
+
+ error: 
+ retcode : 0
+DEBUG 2014-10-24 10:49:04,431: 	 Getting myproxy life time left for myproxy.cern.ch
+DEBUG 2014-10-24 10:49:04,432: 	 Calculating hash of /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=kkotheka/CN=760766/CN=Kunal Kisan Kothekar_cmsweb.cern.ch for credential name
+DEBUG 2014-10-24 10:49:04,838: 	 Executing : 
+ command : myproxy-info -l 245ef9a0d7f7aaae89f3821a5b6107175de3cff5 -s myproxy.cern.ch
+ output : username: 245ef9a0d7f7aaae89f3821a5b6107175de3cff5
+owner: /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=kkotheka/CN=760766/CN=Kunal Kisan Kothekar
+  renewal policy: /DC=ch/DC=cern/OU=computers/CN=vocms(24[34]|3[136]|21|045).cern.ch
+  trusted retrieval policy: /DC=ch/DC=cern/OU=computers/CN=vocms(24[34]|3[136]|21|045).cern.ch
+  timeleft: 415:42:10  (17.3 days)
+
+ error: 
+ retcode : 0
+DEBUG 2014-10-24 10:49:04,840: 	 Myproxy is valid: 1496530
+DEBUG 2014-10-24 10:49:04,840: 	 Command use: status
+DEBUG 2014-10-24 10:49:04,840: 	 Options use: ['crab_projects/crab_Cosmics_Tree_2014-v3_RAW_HcalHPDNoise_227489/']
+DEBUG 2014-10-24 10:49:04,997: 	 CRABClient version: 3.3.10 Compatible
+DEBUG 2014-10-24 10:49:04,997: 	 Instance is prod
+DEBUG 2014-10-24 10:49:04,997: 	 Server base url is cmsweb.cern.ch
+DEBUG 2014-10-24 10:49:04,997: 	 Command url /crabserver/prod/workflow
+DEBUG 2014-10-24 10:49:04,998: 	 Looking up detailed status of task 141024_084349_crab3test-3:kkotheka_crab_Cosmics_Tree_2014-v3_RAW_HcalHPDNoise_227489
+DEBUG 2014-10-24 10:49:05,525: 	 {'status': 'SUBMITTED', 'totalJobdefs': 0, 'jobSetID': '141024_084349_crab3test-3:kkotheka_crab_Cosmics_Tree_2014-v3_RAW_HcalHPDNoise_227489', 'publication': {}, 'jobsPerStatus': {'running': 5}, 'taskFailureMsg': '', 'failedJobdefs': 0, 'ASOURL': 'https://cmsweb.cern.ch/couchdb', 'jobList': [['running', 1], ['running', 3], ['running', 2], ['running', 5], ['running', 4]], 'jobs': {'1': {'State': 'running'}, '3': {'State': 'running'}, '2': {'State': 'running'}, '5': {'State': 'running'}, '4': {'State': 'running'}}, 'jobdefErrors': [], 'outdatasets': [], 'pool': {}}
+INFO 2014-10-24 10:49:05,525: 	 Task name:			141024_084349_crab3test-3:kkotheka_crab_Cosmics_Tree_2014-v3_RAW_HcalHPDNoise_227489
+INFO 2014-10-24 10:49:05,525: 	 Task status:			SUBMITTED
+INFO 2014-10-24 10:49:05,525: 	 Glidemon monitoring URL:	http://glidemon.web.cern.ch/glidemon/jobs.php?taskname=141024_084349_crab3test-3%3Akkotheka_crab_Cosmics_Tree_2014-v3_RAW_HcalHPDNoise_227489
+INFO 2014-10-24 10:49:05,525: 	 Dashboard monitoring URL:	http://dashb-cms-job.cern.ch/dashboard/templates/task-analysis/#user=kkotheka&refresh=0&table=Jobs&p=1&records=25&activemenu=2&status=&site=&tid=141024_084349_crab3test-3%3Akkotheka_crab_Cosmics_Tree_2014-v3_RAW_HcalHPDNoise_227489
+INFO 2014-10-24 10:49:05,526: 	 Details:			running       100.0% (5/5)
+INFO 2014-10-24 10:49:05,526: 	 
+ERROR 2014-10-24 10:49:05,526: 	 No publication information available yet
+DEBUG 2014-10-24 11:10:09,359: 	 Executing command: 'status'
+DEBUG 2014-10-24 11:10:09,364: 	 Found /afs/cern.ch/user/k/kkotheka/.crab3 file
+DEBUG 2014-10-24 11:10:09,382: 	 Checking credentials
+DEBUG 2014-10-24 11:10:09,383: 	 Found proxy file /tmp/x509up_u72023
+DEBUG 2014-10-24 11:10:09,383: 	 Getting proxy life time left
+DEBUG 2014-10-24 11:10:10,391: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u72023 -timeleft
+ output : 594270
+
+ error: 
+ retcode : 0
+DEBUG 2014-10-24 11:10:11,299: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u72023 -actimeleft
+ output : 594269
+
+ error: 
+ retcode : 0
+DEBUG 2014-10-24 11:10:11,299: 	 Proxy valid for 165:04:30 hours
+DEBUG 2014-10-24 11:10:11,423: 	 Executing : 
+ command : openssl x509 -in ~/.globus/usercert.pem -subject -noout
+ output : subject= /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=kkotheka/CN=760766/CN=Kunal Kisan Kothekar
+
+ error: 
+ retcode : 0
+DEBUG 2014-10-24 11:10:11,423: 	 Checking credentials
+DEBUG 2014-10-24 11:10:11,423: 	 Found proxy file /tmp/x509up_u72023
+DEBUG 2014-10-24 11:10:11,424: 	 Getting proxy life time left
+DEBUG 2014-10-24 11:10:12,333: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u72023 -timeleft
+ output : 594268
+
+ error: 
+ retcode : 0
+DEBUG 2014-10-24 11:10:13,243: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u72023 -actimeleft
+ output : 594267
+
+ error: 
+ retcode : 0
+DEBUG 2014-10-24 11:10:13,243: 	 Proxy valid for 165:04:28 hours
+DEBUG 2014-10-24 11:10:14,152: 	 Executing : 
+ command : env X509_USER_PROXY=/tmp/x509up_u72023 voms-proxy-info -fqan
+ output : /cms/Role=NULL/Capability=NULL
+
+ error: 
+ retcode : 0
+DEBUG 2014-10-24 11:10:14,486: 	 Registering user credentials for server /DC=ch/DC=cern/OU=computers/CN=vocms(24[34]|3[136]|21|045).cern.ch
+DEBUG 2014-10-24 11:10:14,601: 	 Executing : 
+ command : openssl x509 -in ~/.globus/usercert.pem -subject -noout
+ output : subject= /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=kkotheka/CN=760766/CN=Kunal Kisan Kothekar
+
+ error: 
+ retcode : 0
+DEBUG 2014-10-24 11:10:14,601: 	 Getting myproxy life time left for myproxy.cern.ch
+DEBUG 2014-10-24 11:10:14,601: 	 Calculating hash of /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=kkotheka/CN=760766/CN=Kunal Kisan Kothekar_cmsweb.cern.ch for credential name
+DEBUG 2014-10-24 11:10:15,108: 	 Executing : 
+ command : myproxy-info -l 245ef9a0d7f7aaae89f3821a5b6107175de3cff5 -s myproxy.cern.ch
+ output : username: 245ef9a0d7f7aaae89f3821a5b6107175de3cff5
+owner: /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=kkotheka/CN=760766/CN=Kunal Kisan Kothekar
+  renewal policy: /DC=ch/DC=cern/OU=computers/CN=vocms(24[34]|3[136]|21|045).cern.ch
+  trusted retrieval policy: /DC=ch/DC=cern/OU=computers/CN=vocms(24[34]|3[136]|21|045).cern.ch
+  timeleft: 415:20:59  (17.3 days)
+
+ error: 
+ retcode : 0
+DEBUG 2014-10-24 11:10:15,110: 	 Myproxy is valid: 1495259
+DEBUG 2014-10-24 11:10:15,110: 	 Command use: status
+DEBUG 2014-10-24 11:10:15,111: 	 Options use: ['crab_projects/crab_Cosmics_Tree_2014-v3_RAW_HcalHPDNoise_227489/']
+DEBUG 2014-10-24 11:10:15,275: 	 CRABClient version: 3.3.10 Compatible
+DEBUG 2014-10-24 11:10:15,275: 	 Instance is prod
+DEBUG 2014-10-24 11:10:15,275: 	 Server base url is cmsweb.cern.ch
+DEBUG 2014-10-24 11:10:15,276: 	 Command url /crabserver/prod/workflow
+DEBUG 2014-10-24 11:10:15,276: 	 Looking up detailed status of task 141024_084349_crab3test-3:kkotheka_crab_Cosmics_Tree_2014-v3_RAW_HcalHPDNoise_227489
+DEBUG 2014-10-24 11:10:15,818: 	 {'status': 'SUBMITTED', 'totalJobdefs': 0, 'jobSetID': '141024_084349_crab3test-3:kkotheka_crab_Cosmics_Tree_2014-v3_RAW_HcalHPDNoise_227489', 'publication': {}, 'jobsPerStatus': {'running': 4, 'finished': 1}, 'taskFailureMsg': '', 'failedJobdefs': 0, 'ASOURL': 'https://cmsweb.cern.ch/couchdb', 'jobList': [['running', 1], ['running', 3], ['running', 2], ['finished', 5], ['running', 4]], 'jobs': {'1': {'State': 'running'}, '3': {'State': 'running'}, '2': {'State': 'running'}, '5': {'State': 'finished'}, '4': {'State': 'running'}}, 'jobdefErrors': [], 'outdatasets': [], 'pool': {}}
+INFO 2014-10-24 11:10:15,818: 	 Task name:			141024_084349_crab3test-3:kkotheka_crab_Cosmics_Tree_2014-v3_RAW_HcalHPDNoise_227489
+INFO 2014-10-24 11:10:15,818: 	 Task status:			SUBMITTED
+INFO 2014-10-24 11:10:15,818: 	 Glidemon monitoring URL:	http://glidemon.web.cern.ch/glidemon/jobs.php?taskname=141024_084349_crab3test-3%3Akkotheka_crab_Cosmics_Tree_2014-v3_RAW_HcalHPDNoise_227489
+INFO 2014-10-24 11:10:15,818: 	 Dashboard monitoring URL:	http://dashb-cms-job.cern.ch/dashboard/templates/task-analysis/#user=kkotheka&refresh=0&table=Jobs&p=1&records=25&activemenu=2&status=&site=&tid=141024_084349_crab3test-3%3Akkotheka_crab_Cosmics_Tree_2014-v3_RAW_HcalHPDNoise_227489
+INFO 2014-10-24 11:10:15,818: 	 Details:			finished       20.0% (1/5)
+INFO 2014-10-24 11:10:15,819: 	 				running        80.0% (4/5)
+INFO 2014-10-24 11:10:15,819: 	 
+ERROR 2014-10-24 11:10:15,819: 	 No publication information available yet
+DEBUG 2014-10-24 11:26:46,424: 	 Executing command: 'status'
+DEBUG 2014-10-24 11:26:46,430: 	 Found /afs/cern.ch/user/k/kkotheka/.crab3 file
+DEBUG 2014-10-24 11:26:46,450: 	 Checking credentials
+DEBUG 2014-10-24 11:26:46,451: 	 Found proxy file /tmp/x509up_u72023
+DEBUG 2014-10-24 11:26:46,451: 	 Getting proxy life time left
+DEBUG 2014-10-24 11:26:47,459: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u72023 -timeleft
+ output : 593273
+
+ error: 
+ retcode : 0
+DEBUG 2014-10-24 11:26:48,467: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u72023 -actimeleft
+ output : 593272
+
+ error: 
+ retcode : 0
+DEBUG 2014-10-24 11:26:48,468: 	 Proxy valid for 164:47:53 hours
+DEBUG 2014-10-24 11:26:48,588: 	 Executing : 
+ command : openssl x509 -in ~/.globus/usercert.pem -subject -noout
+ output : subject= /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=kkotheka/CN=760766/CN=Kunal Kisan Kothekar
+
+ error: 
+ retcode : 0
+DEBUG 2014-10-24 11:26:48,588: 	 Checking credentials
+DEBUG 2014-10-24 11:26:48,589: 	 Found proxy file /tmp/x509up_u72023
+DEBUG 2014-10-24 11:26:48,589: 	 Getting proxy life time left
+DEBUG 2014-10-24 11:26:49,497: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u72023 -timeleft
+ output : 593271
+
+ error: 
+ retcode : 0
+DEBUG 2014-10-24 11:26:50,605: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u72023 -actimeleft
+ output : 593270
+
+ error: 
+ retcode : 0
+DEBUG 2014-10-24 11:26:50,605: 	 Proxy valid for 164:47:51 hours
+DEBUG 2014-10-24 11:26:51,614: 	 Executing : 
+ command : env X509_USER_PROXY=/tmp/x509up_u72023 voms-proxy-info -fqan
+ output : /cms/Role=NULL/Capability=NULL
+
+ error: 
+ retcode : 0
+DEBUG 2014-10-24 11:26:51,876: 	 Registering user credentials for server /DC=ch/DC=cern/OU=computers/CN=vocms(24[34]|3[136]|21|045).cern.ch
+DEBUG 2014-10-24 11:26:51,994: 	 Executing : 
+ command : openssl x509 -in ~/.globus/usercert.pem -subject -noout
+ output : subject= /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=kkotheka/CN=760766/CN=Kunal Kisan Kothekar
+
+ error: 
+ retcode : 0
+DEBUG 2014-10-24 11:26:51,995: 	 Getting myproxy life time left for myproxy.cern.ch
+DEBUG 2014-10-24 11:26:51,995: 	 Calculating hash of /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=kkotheka/CN=760766/CN=Kunal Kisan Kothekar_cmsweb.cern.ch for credential name
+DEBUG 2014-10-24 11:26:52,502: 	 Executing : 
+ command : myproxy-info -l 245ef9a0d7f7aaae89f3821a5b6107175de3cff5 -s myproxy.cern.ch
+ output : username: 245ef9a0d7f7aaae89f3821a5b6107175de3cff5
+owner: /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=kkotheka/CN=760766/CN=Kunal Kisan Kothekar
+  renewal policy: /DC=ch/DC=cern/OU=computers/CN=vocms(24[34]|3[136]|21|045).cern.ch
+  trusted retrieval policy: /DC=ch/DC=cern/OU=computers/CN=vocms(24[34]|3[136]|21|045).cern.ch
+  timeleft: 415:04:22  (17.3 days)
+
+ error: 
+ retcode : 0
+DEBUG 2014-10-24 11:26:52,504: 	 Myproxy is valid: 1494262
+DEBUG 2014-10-24 11:26:52,504: 	 Command use: status
+DEBUG 2014-10-24 11:26:52,504: 	 Options use: ['crab_projects/crab_Cosmics_Tree_2014-v3_RAW_HcalHPDNoise_227489/']
+DEBUG 2014-10-24 11:26:52,623: 	 CRABClient version: 3.3.10 Compatible
+DEBUG 2014-10-24 11:26:52,623: 	 Instance is prod
+DEBUG 2014-10-24 11:26:52,623: 	 Server base url is cmsweb.cern.ch
+DEBUG 2014-10-24 11:26:52,623: 	 Command url /crabserver/prod/workflow
+DEBUG 2014-10-24 11:26:52,623: 	 Looking up detailed status of task 141024_084349_crab3test-3:kkotheka_crab_Cosmics_Tree_2014-v3_RAW_HcalHPDNoise_227489
+DEBUG 2014-10-24 11:26:53,221: 	 {'status': 'SUBMITTED', 'totalJobdefs': 0, 'jobSetID': '141024_084349_crab3test-3:kkotheka_crab_Cosmics_Tree_2014-v3_RAW_HcalHPDNoise_227489', 'publication': {}, 'jobsPerStatus': {'running': 4, 'finished': 1}, 'taskFailureMsg': '', 'failedJobdefs': 0, 'ASOURL': 'https://cmsweb.cern.ch/couchdb', 'jobList': [['running', 1], ['running', 3], ['running', 2], ['finished', 5], ['running', 4]], 'jobs': {'1': {'State': 'running'}, '3': {'State': 'running'}, '2': {'State': 'running'}, '5': {'State': 'finished'}, '4': {'State': 'running'}}, 'jobdefErrors': [], 'outdatasets': [], 'pool': {}}
+INFO 2014-10-24 11:26:53,221: 	 Task name:			141024_084349_crab3test-3:kkotheka_crab_Cosmics_Tree_2014-v3_RAW_HcalHPDNoise_227489
+INFO 2014-10-24 11:26:53,222: 	 Task status:			SUBMITTED
+INFO 2014-10-24 11:26:53,222: 	 Glidemon monitoring URL:	http://glidemon.web.cern.ch/glidemon/jobs.php?taskname=141024_084349_crab3test-3%3Akkotheka_crab_Cosmics_Tree_2014-v3_RAW_HcalHPDNoise_227489
+INFO 2014-10-24 11:26:53,222: 	 Dashboard monitoring URL:	http://dashb-cms-job.cern.ch/dashboard/templates/task-analysis/#user=kkotheka&refresh=0&table=Jobs&p=1&records=25&activemenu=2&status=&site=&tid=141024_084349_crab3test-3%3Akkotheka_crab_Cosmics_Tree_2014-v3_RAW_HcalHPDNoise_227489
+INFO 2014-10-24 11:26:53,222: 	 Details:			finished       20.0% (1/5)
+INFO 2014-10-24 11:26:53,223: 	 				running        80.0% (4/5)
+INFO 2014-10-24 11:26:53,223: 	 
+ERROR 2014-10-24 11:26:53,223: 	 No publication information available yet
+DEBUG 2014-10-24 18:34:17,417: 	 Executing command: 'status'
+DEBUG 2014-10-24 18:34:17,430: 	 Found /afs/cern.ch/user/k/kkotheka/.crab3 file
+DEBUG 2014-10-24 18:34:17,444: 	 Checking credentials
+DEBUG 2014-10-24 18:34:17,444: 	 Found proxy file /tmp/x509up_u72023
+DEBUG 2014-10-24 18:34:17,444: 	 Getting proxy life time left
+DEBUG 2014-10-24 18:34:18,552: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u72023 -timeleft
+ output : 85612
+
+ error: 
+ retcode : 0
+DEBUG 2014-10-24 18:34:19,859: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u72023 -actimeleft
+ output : 85611
+
+ error: 
+ retcode : 0
+DEBUG 2014-10-24 18:34:19,860: 	 Proxy valid for 23:46:52 hours
+DEBUG 2014-10-24 18:34:20,010: 	 Executing : 
+ command : openssl x509 -in ~/.globus/usercert.pem -subject -noout
+ output : subject= /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=kkotheka/CN=760766/CN=Kunal Kisan Kothekar
+
+ error: 
+ retcode : 0
+DEBUG 2014-10-24 18:34:20,011: 	 Checking credentials
+DEBUG 2014-10-24 18:34:20,011: 	 Found proxy file /tmp/x509up_u72023
+DEBUG 2014-10-24 18:34:20,011: 	 Getting proxy life time left
+DEBUG 2014-10-24 18:34:20,918: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u72023 -timeleft
+ output : 85610
+
+ error: 
+ retcode : 0
+DEBUG 2014-10-24 18:34:21,826: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u72023 -actimeleft
+ output : 85609
+
+ error: 
+ retcode : 0
+DEBUG 2014-10-24 18:34:21,827: 	 Proxy valid for 23:46:50 hours
+DEBUG 2014-10-24 18:34:22,937: 	 Executing : 
+ command : env X509_USER_PROXY=/tmp/x509up_u72023 voms-proxy-info -fqan
+ output : /cms/Role=NULL/Capability=NULL
+
+ error: 
+ retcode : 0
+DEBUG 2014-10-24 18:34:23,168: 	 Registering user credentials for server /DC=ch/DC=cern/OU=computers/CN=vocms(24[34]|3[136]|21|045).cern.ch
+DEBUG 2014-10-24 18:34:23,282: 	 Executing : 
+ command : openssl x509 -in ~/.globus/usercert.pem -subject -noout
+ output : subject= /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=kkotheka/CN=760766/CN=Kunal Kisan Kothekar
+
+ error: 
+ retcode : 0
+DEBUG 2014-10-24 18:34:23,283: 	 Getting myproxy life time left for myproxy.cern.ch
+DEBUG 2014-10-24 18:34:23,283: 	 Calculating hash of /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=kkotheka/CN=760766/CN=Kunal Kisan Kothekar_cmsweb.cern.ch for credential name
+DEBUG 2014-10-24 18:34:24,089: 	 Executing : 
+ command : myproxy-info -l 245ef9a0d7f7aaae89f3821a5b6107175de3cff5 -s myproxy.cern.ch
+ output : username: 245ef9a0d7f7aaae89f3821a5b6107175de3cff5
+owner: /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=kkotheka/CN=760766/CN=Kunal Kisan Kothekar
+  renewal policy: /DC=ch/DC=cern/OU=computers/CN=vocms(24[34]|3[136]|21|045).cern.ch
+  trusted retrieval policy: /DC=ch/DC=cern/OU=computers/CN=vocms(24[34]|3[136]|21|045).cern.ch
+  timeleft: 407:56:50  (17.0 days)
+
+ error: 
+ retcode : 0
+DEBUG 2014-10-24 18:34:24,091: 	 Myproxy is valid: 1468610
+DEBUG 2014-10-24 18:34:24,091: 	 Command use: status
+DEBUG 2014-10-24 18:34:24,091: 	 Options use: ['crab_projects/crab_Cosmics_Tree_2014-v3_RAW_HcalHPDNoise_227489/']
+DEBUG 2014-10-24 18:34:24,265: 	 CRABClient version: 3.3.10 Compatible
+DEBUG 2014-10-24 18:34:24,265: 	 Instance is prod
+DEBUG 2014-10-24 18:34:24,265: 	 Server base url is cmsweb.cern.ch
+DEBUG 2014-10-24 18:34:24,266: 	 Command url /crabserver/prod/workflow
+DEBUG 2014-10-24 18:34:24,266: 	 Looking up detailed status of task 141024_084349_crab3test-3:kkotheka_crab_Cosmics_Tree_2014-v3_RAW_HcalHPDNoise_227489
+DEBUG 2014-10-24 18:34:25,369: 	 {u'status': u'COMPLETED', u'totalJobdefs': 0, u'jobSetID': u'141024_084349_crab3test-3:kkotheka_crab_Cosmics_Tree_2014-v3_RAW_HcalHPDNoise_227489', u'publication': {}, u'jobsPerStatus': {u'finished': 5}, u'taskFailureMsg': u'', u'failedJobdefs': 0, u'ASOURL': u'https://cmsweb.cern.ch/couchdb', u'jobList': [[u'finished', 1], [u'finished', 3], [u'finished', 2], [u'finished', 5], [u'finished', 4]], u'jobs': {u'1': {u'State': u'finished'}, u'3': {u'State': u'finished'}, u'2': {u'State': u'finished'}, u'5': {u'State': u'finished'}, u'4': {u'State': u'finished'}}, u'jobdefErrors': [], u'outdatasets': [], u'pool': {}}
+INFO 2014-10-24 18:34:25,369: 	 Task name:			141024_084349_crab3test-3:kkotheka_crab_Cosmics_Tree_2014-v3_RAW_HcalHPDNoise_227489
+INFO 2014-10-24 18:34:25,369: 	 Task status:			COMPLETED
+INFO 2014-10-24 18:34:25,369: 	 Glidemon monitoring URL:	http://glidemon.web.cern.ch/glidemon/jobs.php?taskname=141024_084349_crab3test-3%3Akkotheka_crab_Cosmics_Tree_2014-v3_RAW_HcalHPDNoise_227489
+INFO 2014-10-24 18:34:25,369: 	 Dashboard monitoring URL:	http://dashb-cms-job.cern.ch/dashboard/templates/task-analysis/#user=kkotheka&refresh=0&table=Jobs&p=1&records=25&activemenu=2&status=&site=&tid=141024_084349_crab3test-3%3Akkotheka_crab_Cosmics_Tree_2014-v3_RAW_HcalHPDNoise_227489
+INFO 2014-10-24 18:34:25,370: 	 Details:			finished      100.0% (5/5)
+INFO 2014-10-24 18:34:25,370: 	 
+ERROR 2014-10-24 18:34:25,370: 	 No publication information available yet
