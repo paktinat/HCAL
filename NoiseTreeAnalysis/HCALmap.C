@@ -265,21 +265,21 @@ int EtaPhitoRBXrm( int ieta, int iphi, int idepth ){
 int EtaPhitoRBX( int ieta, int iphi, int idepth ){
   //
   // Barrel
-  // HBM 1-18
-  // HBP 19-36
+  // HBP 0-17
+  // HBM 18-35
   //
   // Endcap
-  // HEM 37-54
-  // HEP 55-72
+  // HEP 36-53
+  // HEM 54-71
   //
   int output=888;
   //
-  if( ieta<  0  && ieta>-17 && idepth<3  ) output = HBM_EtaPhitoRBX(ieta,iphi,idepth); //HBM
-  if( ieta>  0  && ieta< 17 && idepth<3  ) output = HBP_EtaPhitoRBX(ieta,iphi,idepth)+18; //HBP
-  if( ieta==-16 &&             idepth==3 ) output = HEM_EtaPhitoRBX(ieta,iphi,idepth)+36; //HEM
-  if( ieta<-16  && ieta>-30              ) output = HEM_EtaPhitoRBX(ieta,iphi,idepth)+36; //HEM
-  if( ieta== 16 &&             idepth==3 ) output = HEP_EtaPhitoRBX(ieta,iphi,idepth)+54; //HEP
-  if( ieta> 16  && ieta< 30              ) output = HEP_EtaPhitoRBX(ieta,iphi,idepth)+54; //HEP
+  if( ieta>  0  && ieta< 17 && idepth<3  ) output = HBP_EtaPhitoRBX(ieta,iphi,idepth)-1; //HBP
+  if( ieta<  0  && ieta>-17 && idepth<3  ) output = HBM_EtaPhitoRBX(ieta,iphi,idepth)+17; //HBM
+  if( ieta== 16 &&             idepth==3 ) output = HEP_EtaPhitoRBX(ieta,iphi,idepth)+35; //HEP
+  if( ieta> 16  && ieta< 30              ) output = HEP_EtaPhitoRBX(ieta,iphi,idepth)+35; //HEP
+  if( ieta==-16 &&             idepth==3 ) output = HEM_EtaPhitoRBX(ieta,iphi,idepth)+53; //HEM
+  if( ieta<-16  && ieta>-30              ) output = HEM_EtaPhitoRBX(ieta,iphi,idepth)+53; //HEM
   //
   return output;
 }

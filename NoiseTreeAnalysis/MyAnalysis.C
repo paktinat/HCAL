@@ -453,7 +453,9 @@ int MyAnalysis(TString filelist = "TEST", bool addPU=false) {
             float C4 = TS4RBX[i];
             float C5 = TS5RBX[i];
 
-	    //cout<<"TS4RBX[i]: "<<C4<<" , from (*RBXCharge)[i][4]: "<<(*RBXCharge)[i][4]<<endl;
+
+	    if(fabs(C4 - (*RBXCharge)[i][4]) > 0.001)
+	      cout<<"TS4RBX["<<i<<"]: "<<C4<<" , from (*RBXCharge)["<<i<<"][4]: "<<(*RBXCharge)[i][4]<<endl;
 
             if (isRBXNoisy(C4, C5, h_RBX_R45_P45)) {
                 h_RBXNoisy_NoisyNmFr_NoisyEnFr->Fill(EnFr, NmFr);
