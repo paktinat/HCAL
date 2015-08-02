@@ -170,10 +170,10 @@ Int_t RBX_Y(Int_t id) {
  */
 
 
-//To run "root MyAnalysis.C'("Test")'   "
+//To run "root MaryamAnalysis.C'("Test")'   "
 //---------------------------------------------------------------------------
 
-int MyAnalysis(TString filelist = "TEST", bool addPU=false) {
+int MaryamAnalysis(TString filelist = "TEST", bool addPU=false) {
 
     TString sFOut = "res_";
     sFOut.Append(filelist);
@@ -187,36 +187,30 @@ int MyAnalysis(TString filelist = "TEST", bool addPU=false) {
     TH2D* h_RBX_R45_P45 = new TH2D("RBX_R45_P45", "RBX_R45_P45", 100, 0, 1000, 30, -1.5, 1.5);
     TH2D* h_RecHit_R45_P45 = new TH2D("RecHit_R45_P45", "RecHit_R45_P45", 100, 0, 1000, 30, -1.5, 1.5);
 
-    TH2D* h_RBXNoisy_NoisyNmFr_NoisyEnFr = new TH2D("RBXNoisy_NoisyNmFr_NoisyEnFr", "RBXNoisy_NoisyNmFr_NoisyEnFr", 20, 0, 1.01, 20, 0, 1.01);
-    TH2D* h_RBXHealthy_NoisyNmFr_NoisyEnFr = new TH2D("RBXHealthy_NoisyNmFr_NoisyEnFr", "RBXHealthy_NoisyNmFr_NoisyEnFr", 20, 0, 1.1, 20, 0, 1.1);
+    TH2D* h_RBXNoisy_NoisyNmFr_NoisyEnFr = new TH2D("RBXNoisy_NoisyNmFr_NoisyEnFr", "RBXNoisy_NoisyNmFr_NoisyEnFr", 21, 0, 1.05, 21, 0, 1.05);
+    TH2D* h_RBXHealthy_NoisyNmFr_NoisyEnFr = new TH2D("RBXHealthy_NoisyNmFr_NoisyEnFr", "RBXHealthy_NoisyNmFr_NoisyEnFr", 21, 0, 1.05, 21, 0, 1.05);
 
     TH2D* h_RBXNoisy_RBXPhi_RBXEta = new TH2D("RBXNoisy_RBXPhi_RBXEta", "RBXNoisy_RBXPhi_RBXEta", 4, 0, 4, 18, 0, 18);
     TH2D* h_RBXHealthy_RBXPhi_RBXEta = new TH2D("RBXHealthy_RBXPhi_RBXEta", "RBXHealthy_RBXPhi_RBXEta", 4, 0, 4, 18, 0, 18);
 
-    TH1D* h_RBXNoisy_NRH = new TH1D("RBXNoisy_NRH", "RBXNoisy_NRH", 72, 0, 72);
-    TH1D* h_RecHitNoisy_NRH = new TH1D("RecHitNoisy_NRH", "RecHitNoisy_NRH", 72, 0, 72);
-    TH1D* h_EpsNoisy_NRH = new TH1D("EpsNoisy_NRH", "EpsNoisy_NRH", 72, 0, 72);
-    TH1D* h_eff = new TH1D("eff", "eff", 72, 0, 72);
-
-    TH1D* h_RBXHealthy_NRH = new TH1D("RBXHealthy_NRH", "RBXHealthy_NRH", 72, 0, 72);
-    TH1D* h_RecHitHealthy_NRH = new TH1D("RecHitHealthy_NRH", "RecHitHealthy_NRH", 72, 0, 72);
-    TH1D* h_EpsHealthy_NRH = new TH1D("EpsHealthy_NRH", "EpsHealthy_NRH", 72, 0, 72);
+    TH1D* h_RBXNoisy_En = new TH1D("RBXNoisy_En", "RBXNoisy_En", 50,0,50);
+    TH1D* h_RBXHealthy_En = new TH1D("RBXHealthy_En", "RBXHealthy_En", 50,0,50);
 
     TH1D* h_TEST_TS = new TH1D("TEST_TS", "TEST_TS", 10, 0, 10);
     //    TH1D* h_NRecHit_TS = new TH1D("TEST_TS", "TEST_TS", 10, 0, 10);
 
+    TH1F* h_RecHitEnergy = new TH1F("RecHitEnergy", "RecHitEnergy", 50,0,50);
+    TH1F* h_RBXEnergy = new TH1F("RBXEnergy", "RBXEnergy", 50,0,50);
 
-    TH1F* h_RecHitEnergy = new TH1F("RecHitEnergy", "RecHitEnergy", 60,-10,50);
-    TH1F* h_ERH = new TH1F("RecHitEn_perRBX", "RecHitEn_perRBX", 70,-20,50);
-    TH1F* h_RBXEnergy = new TH1F("RBXEnergy", "RBXEnergy", 70,-20,50);
-
+/*
     TH2I* h_RBX_X_Y = new TH2I("RBX_X_Y", "RBX_X_Y", 4, 0, 4, 17, 0, 17);
     h_RBX_X_Y->GetXaxis()->SetBinLabel(1,"HE-");
     h_RBX_X_Y->GetXaxis()->SetBinLabel(2,"HB-");
     h_RBX_X_Y->GetXaxis()->SetBinLabel(3,"HB+");
     h_RBX_X_Y->GetXaxis()->SetBinLabel(4,"HE+");
+*/
 
-    TH1D* h_Diff_RBXEn_RHSumEn = new TH1D("Diff_RBXEn_RHSumEn", "Diff_RBXEn_RHSumEn", 100, -10, 10);
+    TH1D* h_Diff_RBXEn_RHSumEn = new TH1D("Diff_RBXEn_RHSumEn", "Diff_RBXEn_RHSumEn", 40, -10, 10);
     h_Diff_RBXEn_RHSumEn->GetXaxis()->SetTitle("#varepsilon_{RBX}-#varepsilon_{#Sigma RH}");
     h_Diff_RBXEn_RHSumEn->GetYaxis()->SetTitle("Energy Difference per RBX per Event");
     h_Diff_RBXEn_RHSumEn->GetXaxis()->SetTitleSize(0.07);
@@ -232,8 +226,8 @@ int MyAnalysis(TString filelist = "TEST", bool addPU=false) {
     h_EnDiff_Vs_RBXIndex->GetYaxis()->SetTitleOffset(0.6);
 
     TH1I* h_counting = new TH1I("EnDiff", "#varepsilon_{RBX}-#varepsilon_{#Sigma RH}", 2,0,2);
-    h_counting->GetXaxis()->SetBinLabel(1,"#varepsilon_{RBX}-#varepsilon_{#Sigma RH} <= 0.001");
-    h_counting->GetXaxis()->SetBinLabel(2,"#varepsilon_{RBX}-#varepsilon_{#Sigma RH} > 0.001");
+    h_counting->GetXaxis()->SetBinLabel(1,"|#varepsilon_{RBX}-#varepsilon_{#Sigma RH}| <= 0.001");
+    h_counting->GetXaxis()->SetBinLabel(2,"|#varepsilon_{RBX}-#varepsilon_{#Sigma RH}| > 0.001");
     h_counting->GetXaxis()->SetLabelSize(0.11);
 
     TH1D * h_PS_TS[10];
@@ -246,10 +240,12 @@ int MyAnalysis(TString filelist = "TEST", bool addPU=false) {
         h_PS_TS[j] = new TH1D(s_ps, s_ps, 10, 0, 10);
     }
 
-    TH1D* h_tmp;
-    TH1I* h2Dsize = new TH1I("officialsize", "R45Noisesize", 2, 0, 2);
-    TH2I* h2D = new TH2I("official", "R45Noise", 2, 0, 2, 2, 0, 2);
-    TH2I* h2D_Tight = new TH2I("official_Tight", "R45Noise", 2, 0, 2, 2, 0, 2);
+    TH2I* h_RBXR45Noise_vs_HasBadRBXR45 = new TH2I("h_RBXR45Noise_vs_HasBadRBXR45", "h_RBXR45Noise_vs_HasBadRBXR45", 2, 0, 2, 2, 0, 2);
+    TH2I* h_ourMethod_0p5_vs_HasBadRBXRechitR45Loose = new TH2I("h_ourMethod_0p5_vs_HasBadRBXRechitR45Loose", "h_ourMethod_0p5_vs_HasBadRBXRechitR45Loose", 2, 0, 2, 2, 0, 2);
+    TH2I* h_ourMethod_0p2_vs_HasBadRBXRechitR45Tight = new TH2I("h_ourMethod_0p2_vs_HasBadRBXRechitR45Tight", "h_ourMethod_0p2_vs_HasBadRBXRechitR45Tight", 2, 0, 2, 2, 0, 2);
+
+    TH1D* MET_RBXR45Noise = new TH1D("MET_RBXR45Noise","MET_RBXR45Noise", 100, 0, 100);
+    TH1D* MET_others = new TH1D("others","others", 100, 0, 100);
 
     TH1D* ntupleMET = new TH1D("savedMET","savedMET", 100, 0, 100);
     TH1D* hMET[4];
@@ -264,26 +260,40 @@ int MyAnalysis(TString filelist = "TEST", bool addPU=false) {
 
 	vector<std::string> inputfile;
 
+
 	inputfile.push_back("/dataLOCAL/HCAL/RootFiles/Schenara/data_Commissioning2014_HcalHPDNoise_2402393C_D869_E411_89A7_02163E010EC9.root");
-	/*inputfile.push_back("/dataLOCAL/HCAL/RootFiles/Schenara/data_Commissioning2014_HcalHPDNoise_3AA6CA83_D669_E411_8BBB_02163E010CAB.root");
+	inputfile.push_back("/dataLOCAL/HCAL/RootFiles/Schenara/data_Commissioning2014_HcalHPDNoise_70466B54_DA69_E411_91CF_02163E010DD6.root");
+	inputfile.push_back("/dataLOCAL/HCAL/RootFiles/Schenara/data_Commissioning2014_HcalHPDNoise_8CCAACA7-D769-E411-9066-02163E010EC2.root");
+	inputfile.push_back("/dataLOCAL/HCAL/RootFiles/Schenara/data_Commissioning2014_HcalHPDNoise_484C0B6F_D869_E411_B2FA_02163E010F54.root");
+	inputfile.push_back("/dataLOCAL/HCAL/RootFiles/Schenara/data_Commissioning2014_HcalHPDNoise_B0E17F31-DB69-E411-AE5B-02163E010E2E.root");
+	inputfile.push_back("/dataLOCAL/HCAL/RootFiles/Schenara/data_Commissioning2014_HcalHPDNoise_3AA6CA83_D669_E411_8BBB_02163E010CAB.root");
+	inputfile.push_back("/dataLOCAL/HCAL/RootFiles/Schenara/data_Commissioning2014_HcalHPDNoise_5AAADD05_D769_E411_9B7E_02163E010E2E.root");
 	inputfile.push_back("/dataLOCAL/HCAL/RootFiles/Schenara/data_Commissioning2014_HcalHPDNoise_466D8789_D769_E411_AA9F_02163E00FFC8.root");
+	inputfile.push_back("/dataLOCAL/HCAL/RootFiles/Schenara/data_Commissioning2014_HcalHPDNoise_7EC0738A-D769-E411-A594-02163E010C0A.root");
+	inputfile.push_back("/dataLOCAL/HCAL/RootFiles/Schenara/data_Commissioning2014_HcalHPDNoise_AADCF0AC-D669-E411-927F-02163E010ED8.root");
 	inputfile.push_back("/dataLOCAL/HCAL/RootFiles/Schenara/data_Commissioning2014_HcalHPDNoise44404E2B_DA69_E411_9B5B_02163E010F9B.root");
 	inputfile.push_back("/dataLOCAL/HCAL/RootFiles/Schenara/data_Commissioning2014_HcalHPDNoise_30F784B4_D669_E411_BE94_02163E010DEF.root");
-	inputfile.push_back("/dataLOCAL/HCAL/RootFiles/Schenara/data_Commissioning2014_HcalHPDNoise_3685A126_D769_E411_A868_02163E010E36.root");*/
+	inputfile.push_back("/dataLOCAL/HCAL/RootFiles/Schenara/data_Commissioning2014_HcalHPDNoise_3685A126_D769_E411_A868_02163E010E36.root");
+	inputfile.push_back("/dataLOCAL/HCAL/RootFiles/Schenara/data_Commissioning2014_HcalHPDNoise_7E24DDB1-D869-E411-A572-02163E010F9A.root");
+	inputfile.push_back("/dataLOCAL/HCAL/RootFiles/Schenara/data_Commissioning2014_HcalHPDNoise_861B5538-DB69-E411-9998-02163E010C09.root");
+	inputfile.push_back("/dataLOCAL/HCAL/RootFiles/Schenara/data_Commissioning2014_HcalHPDNoise_AA2F73C6-D869-E411-9D69-02163E010ED2.root");
+	inputfile.push_back("/dataLOCAL/HCAL/RootFiles/Schenara/data_Commissioning2014_HcalHPDNoise_566D74B5_D669_E411_98DF_02163E010ED8.root");
+	inputfile.push_back("/dataLOCAL/HCAL/RootFiles/Schenara/data_Commissioning2014_HcalHPDNoise_70F318A1_D869_E411_9F71_02163E010C0A.root");
+	inputfile.push_back("/dataLOCAL/HCAL/RootFiles/Schenara/data_Commissioning2014_HcalHPDNoise_AEE04716-D769-E411-AEF5-02163E010E24.root");
+	inputfile.push_back("/dataLOCAL/HCAL/RootFiles/Schenara/data_Commissioning2014_HcalHPDNoise_48427151_DB69_E411_A67E_02163E010D00.root");
+	inputfile.push_back("/dataLOCAL/HCAL/RootFiles/Schenara/data_Commissioning2014_HcalHPDNoise_76E91BFE--D669-E411-9457-02163E010E87.root");
+	inputfile.push_back("/dataLOCAL/HCAL/RootFiles/Schenara/data_Commissioning2014_HcalHPDNoise_6ED70FFB_D769_E411_B65A_02163E010DDF.root");
+	inputfile.push_back("/dataLOCAL/HCAL/RootFiles/Schenara/data_Commissioning2014_HcalHPDNoise_9A1B13C4-D769-E411-BEFF-02163E010EFB.root");
+	inputfile.push_back("/dataLOCAL/HCAL/RootFiles/Schenara/data_Commissioning2014_HcalHPDNoise_7AED6E76-DB69-E411-9CF5-02163E010DD2.root");
+	//inputfile.push_back("/dataLOCAL/HCAL/RootFiles/Schenara/data_Commissioning2014_HcalHPDNoise_6A66D38F_D669_E411_8D83_02163E010DC6.root");
 
-/*
-	inputfile.push_back("/dataLOCAL/HCAL/RootFiles/Schenara/data_Commissioning2014_HcalHPDNoise_2402393Cto3685A126.root");
-	inputfile.push_back("/dataLOCAL/HCAL/RootFiles/Schenara/data_Commissioning2014_HcalHPDNoise_3AA6CA83to466D8789.root");
-	inputfile.push_back("/dataLOCAL/HCAL/RootFiles/Schenara/data_Commissioning2014_HcalHPDNoise_48427151to566D74B5.root");
-	inputfile.push_back("/dataLOCAL/HCAL/RootFiles/Schenara/data_Commissioning2014_HcalHPDNoise_5AAADD05to70F318A1.root");
-	inputfile.push_back("/dataLOCAL/HCAL/RootFiles/Schenara/data_Commissioning2014_HcalHPDNoise_76E91BFEto861B5538.root");
-	inputfile.push_back("/dataLOCAL/HCAL/RootFiles/Schenara/data_Commissioning2014_HcalHPDNoise_8CCAACA7toACB03CF4.root");
-	inputfile.push_back("/dataLOCAL/HCAL/RootFiles/Schenara/data_Commissioning2014_HcalHPDNoise_AEE04716toCC6960E7.root");
-	inputfile.push_back("/dataLOCAL/HCAL/RootFiles/Schenara/data_Commissioning2014_HcalHPDNoise_E0090964toF2CDE4A6.root");
-	inputfile.push_back("/dataLOCAL/HCAL/RootFiles/Schenara/data_Commissioning2014_HcalHPDNoise_F44047C5-D769to1A5D12E0-D769.root");
-*/
 
 	analysisClass * halilCode = new analysisClass();
+
+	int noisyRBX = 0;
+	int healtRBX = 0;
+	int noisyRBX_gt0p2 = 0;
+	int healtRBX_bt0p2 = 0;
 
 	for (unsigned int file=0;file<inputfile.size();file++) {
 
@@ -292,8 +302,8 @@ int MyAnalysis(TString filelist = "TEST", bool addPU=false) {
 
 
     // ========== B E G I N ==========
-    //Long64_t nentries = t->GetEntries();
-    Long64_t nentries = 1000;
+    Long64_t nentries = t->GetEntries();
+    //Long64_t nentries = 10;
 
     unsigned int event = 0;
     unsigned int run = 0;
@@ -308,8 +318,10 @@ int MyAnalysis(TString filelist = "TEST", bool addPU=false) {
     std::vector< std::vector<float> > *HBHEDigiEnergy = 0;
     std::vector<float> *HBHEDigiRecEnergy = 0;
     std::vector<float> *HBHEDigiEta = 0;
+    std::vector<double> *RBXEnergy = 0;
     std::vector<double> *RBXEnergy15 = 0;
     std::vector< std::vector<double> > *RBXCharge = 0;
+    std::vector<int>     *HasBadRBXR45 = 0;
     std::vector<int>     *HasBadRBXRechitR45Loose = 0;
     std::vector<int>     *HasBadRBXRechitR45Tight = 0;
     std::vector<double> *HBET = 0;
@@ -329,8 +341,10 @@ int MyAnalysis(TString filelist = "TEST", bool addPU=false) {
     t->SetBranchAddress("HBHEDigiEnergy",&HBHEDigiEnergy);
     t->SetBranchAddress("HBHEDigiRecEnergy",&HBHEDigiRecEnergy);
     t->SetBranchAddress("HBHEDigiEta",&HBHEDigiEta);
+    t->SetBranchAddress("RBXEnergy",&RBXEnergy);
     t->SetBranchAddress("RBXEnergy15",&RBXEnergy15);
     t->SetBranchAddress("RBXCharge",&RBXCharge);
+    t->SetBranchAddress("HasBadRBXR45",&HasBadRBXR45);
     t->SetBranchAddress("HasBadRBXRechitR45Loose",&HasBadRBXRechitR45Loose);
     t->SetBranchAddress("HasBadRBXRechitR45Tight",&HasBadRBXRechitR45Tight);
     t->SetBranchAddress("HBET",&HBET);
@@ -393,9 +407,8 @@ int MyAnalysis(TString filelist = "TEST", bool addPU=false) {
 
 	    RBXIndex = halilCode->EtaPhitoRBX(HBHERecHitIEta->at(i),HBHERecHitIPhi->at(i),HBHERecHitDepth->at(i));
 
-	    h_RecHitEnergy->Fill(HBHERecHitEnergy->at(i));
-
 	    //if(!(HBHERecHitEnergy->at(i) > 1.5)) continue;
+	    if(!(HBHERecHitEnergy->at(i) > 5)) continue;
 
             NRH[RBXIndex] += 1.0;
             ERH[RBXIndex] += HBHERecHitEnergy->at(i);
@@ -432,76 +445,85 @@ int MyAnalysis(TString filelist = "TEST", bool addPU=false) {
 	// compare the calculated MET with the one saved into the ntuples
 	ntupleMET->Fill(sqrt(pow(HBET->at(0)+HEET->at(0),2)+pow(HBET->at(1)+HEET->at(1),2)));
 
-	    //h_RBX_X_Y->Fill(RBX_X(RBXIndex),RBX_Y(RBXIndex));
-
-	bool R45Noise = false;
+	bool RBXR45Noise = false;
+	bool ourMethod_0p2 = false;
+	bool ourMethod_0p5 = false;
 
         for (int i = 0; i < 72; i++) {
 
-	    //if (ERH[i] == 0 || NRH[i] == 0) continue;
+	    if (ERH[i] == 0 || NRH[i] == 0) continue;
 
+	    h_RecHitEnergy->Fill(ERH[i]);
+
+            //h_RBXEnergy->Fill(RBXEnergy->at(i));
             h_RBXEnergy->Fill(RBXEnergy15->at(i));
-            h_ERH->Fill(ERH[i]);
 	    
+	    //double diff = RBXEnergy->at(i) - ERH[i];
 	    double diff = RBXEnergy15->at(i) - ERH[i];
 	    h_Diff_RBXEn_RHSumEn->Fill(diff);		
 	    if(fabs(diff) <= 0.001) h_counting->Fill(0); 
 	    else if(fabs(diff) > 0.001) h_counting->Fill(1); 
-	    h_EnDiff_Vs_RBXIndex->Fill(i,fabs(diff));
+	    if(fabs(diff) > 0.001) h_EnDiff_Vs_RBXIndex->Fill(i,fabs(diff));
+
+	    //if(fabs(diff) > 0.001) {cout<<"*** Energy Diff ***"<<endl;cout<<"i: "<<i<<", RBXEnergy->at(i): "<<RBXEnergy->at(i)<<" and ERH[i]: "<<ERH[i]<<endl;}
 
             double EnFr = RecHitNoisy_ERH[i] / ERH[i];
             double NmFr = RecHitNoisy_NRH[i] / NRH[i];
             float C4 = TS4RBX[i];
             float C5 = TS5RBX[i];
 
+	    //double chargediff4 = (*RBXCharge)[i][4] - C4;
+	    //if(fabs(chargediff4) > 0.001) {cout<<"*** Charge Diff 4 ***"<<endl;cout<<"i: "<<i<<", (*RBXCharge)[i][4]: "<<(*RBXCharge)[i][4]<<" and TS4RBX[i]: "<<TS4RBX[i]<<endl;}
 
-	    if(fabs(C4 - (*RBXCharge)[i][4]) > 0.001)
-	      cout<<"TS4RBX["<<i<<"]: "<<C4<<" , from (*RBXCharge)["<<i<<"][4]: "<<(*RBXCharge)[i][4]<<endl;
+	    //double chargediff5 = (*RBXCharge)[i][5] - C5;
+	    //if(fabs(chargediff5) > 0.001) {cout<<"*** Charge Diff 5 ***"<<endl;cout<<"i: "<<i<<", (*RBXCharge)[i][5]: "<<(*RBXCharge)[i][5]<<" and TS5RBX[i]: "<<TS5RBX[i]<<endl;}
+	    //cout<<"TS4RBX[i]: "<<C4<<" , from (*RBXCharge)[i][4]: "<<(*RBXCharge)[i][4]<<endl;
+	
+	   //if(fabs(diff) > 0.001 || fabs(chargediff4) > 0.001 || fabs(chargediff5) > 0.001) continue; //cout<<"****** --- ******"<<endl; 
 
             if (isRBXNoisy(C4, C5, h_RBX_R45_P45)) {
+		RBXR45Noise = true; 
+		noisyRBX++;
                 h_RBXNoisy_NoisyNmFr_NoisyEnFr->Fill(EnFr, NmFr);
                 h_RBXNoisy_RBXPhi_RBXEta->Fill(RBX_X(i), RBX_Y(i));
-                h_RBXNoisy_NRH->Fill(NRH[i]);
+                h_RBXNoisy_En->Fill(ERH[i]);
 
-		if (EnFr >= 0.2 || NmFr >= 0.2) {
-		  R45Noise = true;
-		  h_RecHitNoisy_NRH->Fill(NRH[i]);
+		if (EnFr >= 0.2 || NmFr >= 0.2) { 
+		  ourMethod_0p2 = true; 
+		  noisyRBX_gt0p2++;
 		}
+
+		if (EnFr >= 0.5 || NmFr >= 0.5)  
+		  ourMethod_0p5 = true; 
 	    
 	    } else {
+		healtRBX++;
                 h_RBXHealthy_NoisyNmFr_NoisyEnFr->Fill(EnFr, NmFr);
                 h_RBXHealthy_RBXPhi_RBXEta->Fill(RBX_X(i), RBX_Y(i));
-                h_RBXHealthy_NRH->Fill(NRH[i]);
+                h_RBXHealthy_En->Fill(ERH[i]);
 
 		if (EnFr < 0.2 && NmFr < 0.2) 
-		  h_RecHitHealthy_NRH->Fill(NRH[i]);
+		  healtRBX_bt0p2++;
+
+		if (EnFr < 0 || NmFr < 0) cout<<"RecHitNoisy_ERH["<<i<<"]: "<<RecHitNoisy_ERH[i]<<", and ERH["<<i<<"]: "<<ERH[i]<<endl;
 	    
 	    }
-//             if (EnFr < 0.2 && NmFr < 0.2) {
-//                 h_RecHitHealthy_NRH->Fill(NRH[i]);
-//             } else {
-//                 h_RecHitNoisy_NRH->Fill(NRH[i]);
-//             }
 
         }// i over RBX
-            h2D->Fill(HasBadRBXRechitR45Loose->at(0),R45Noise);
-            h2D_Tight->Fill(HasBadRBXRechitR45Tight->at(0),R45Noise);
+            h_RBXR45Noise_vs_HasBadRBXR45->Fill(HasBadRBXR45->at(0),RBXR45Noise);
+            h_ourMethod_0p5_vs_HasBadRBXRechitR45Loose->Fill(HasBadRBXRechitR45Loose->at(0),ourMethod_0p5);
+            h_ourMethod_0p2_vs_HasBadRBXRechitR45Tight->Fill(HasBadRBXRechitR45Tight->at(0),ourMethod_0p2);
 
-	h2Dsize->Fill(HasBadRBXRechitR45Loose->size());
-
-        h_tmp = (TH1D*) h_RBXNoisy_NRH->Clone("tmp");
-        h_tmp->Add(h_RecHitNoisy_NRH, -1);
-        h_EpsNoisy_NRH->Divide(h_RBXNoisy_NRH, h_tmp);
-        delete h_tmp;
-
-        h_eff->Divide(h_RecHitNoisy_NRH, h_RBXNoisy_NRH);
-        h_EpsHealthy_NRH->Divide(h_RecHitHealthy_NRH, h_RBXHealthy_NRH);
+	if(RBXR45Noise) MET_RBXR45Noise->Fill(MET[1]);
+	else if(!RBXR45Noise) MET_others->Fill(MET[1]);
 
     }//jentry	
 }
 
     delete halilCode;
 
+	cout<<"Among "<<noisyRBX<<" noisy RBXs, we are able to tag "<<noisyRBX_gt0p2<<" with our method, hence "<<(float)noisyRBX_gt0p2/noisyRBX<<endl;
+	cout<<"Among "<<healtRBX<<" healthy RBXs, we are able to tag "<<healtRBX_bt0p2<<" with our method, hence "<<(float)healtRBX_bt0p2/healtRBX<<endl;
     // ======= E N D =======
     fout.Write();
     fout.Close();
