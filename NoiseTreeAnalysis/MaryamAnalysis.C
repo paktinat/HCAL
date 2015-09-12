@@ -72,7 +72,7 @@ double LowerLimitRecHit(double energy) {
 
     Int_t LowerBin = -1;
 
-    for (int j = 0; j < 7; j++) {
+    for (int j = 0; j < 6; j++) {
         if (TS4TS5LowerThreshold[j] < energy)
             LowerBin = j;
     }
@@ -80,11 +80,9 @@ double LowerLimitRecHit(double energy) {
     if (LowerBin == -1)
         return -10000.0;
 
-    else{
-	double outvalue = (energy - TS4TS5LowerThreshold[LowerBin]) / (TS4TS5LowerThreshold[LowerBin + 1] - TS4TS5LowerThreshold[LowerBin]) * (TS4TS5LowerCut[LowerBin + 1] - TS4TS5LowerCut[LowerBin]) + TS4TS5LowerCut[LowerBin];
-	cout<<" => the output value: "<<outvalue<<endl;
+    else
         return (energy - TS4TS5LowerThreshold[LowerBin]) / (TS4TS5LowerThreshold[LowerBin + 1] - TS4TS5LowerThreshold[LowerBin]) * (TS4TS5LowerCut[LowerBin + 1] - TS4TS5LowerCut[LowerBin]) + TS4TS5LowerCut[LowerBin];
-	}
+
 }
 
 double LowerLimitRBX(double energy) {
@@ -160,10 +158,12 @@ Int_t isRecHitNoisy(double c4, double c5, TH2D* h) {
     double R45 = (c4 - c5) / P45;
     h->Fill(P45, R45);
     if ((R45 < LowerLimitRecHit(P45) || R45 > UpperLimit(P45))) isRHNsy = 1;
+/*
 	if(isRHNsy==1) cout<<"\n		 ========= bad rechits ========="<<endl; 
 	cout<<"\nR45: "<<R45<<", lower: "<<LowerLimitRecHit(P45)<<", upper: "<<UpperLimit(P45)<<endl;
 	if(isRHNsy==1 && R45 < LowerLimitRecHit(P45)) cout<<"			Lower Limit Fired ------- "<<LowerLimitRecHit(P45)<<endl;
 	if(isRHNsy==1 && R45 > UpperLimit(P45)) cout<<"			Upper Limit Fired ------- "<<UpperLimit(P45)<<endl;
+*/
     return isRHNsy;
 }
 
@@ -297,9 +297,9 @@ int MaryamAnalysis(TString filelist = "TEST", bool addPU=false) {
 	inputfile.push_back("/dataLOCAL/dataLOCAL/HCAL/RootFiles/Schenara/data_Commissioning2014_HcalHPDNoise_70466B54_DA69_E411_91CF_02163E010DD6.root");
 */
 	// MET 
-        //inputfile.push_back("/home/HCAL/data-Run2015A-MET-RAW-v1-248-038-00000-DA2F1ED8-0513-E511-BBE5-02163E01451E.root");
-        //inputfile.push_back("/home/HCAL/data-Run2015B-MET-RAW-v1-251-252-00000-6E03DF13-E925-E511-8DD5-02163E0134D6.root");
-        //inputfile.push_back("/home/HCAL/data-Run2015B-MET-RAW-v1-251-562-00000-C068C85C-6B28-E511-A828-02163E012787.root");
+        inputfile.push_back("/home/HCAL/data-Run2015A-MET-RAW-v1-248-038-00000-DA2F1ED8-0513-E511-BBE5-02163E01451E.root");
+        inputfile.push_back("/home/HCAL/data-Run2015B-MET-RAW-v1-251-252-00000-6E03DF13-E925-E511-8DD5-02163E0134D6.root");
+        inputfile.push_back("/home/HCAL/data-Run2015B-MET-RAW-v1-251-562-00000-C068C85C-6B28-E511-A828-02163E012787.root");
         inputfile.push_back("/home/HCAL/data-Run2015B-MET-RAW-v1-251-168-00000-12E48CA8-2C25-E511-9631-02163E0136B4.root");
 /*
 	// Jet
@@ -406,10 +406,8 @@ int MaryamAnalysis(TString filelist = "TEST", bool addPU=false) {
 
         // ========== LOOP OVER Channels ==========
 
-	if(jentry!=735 && jentry!=1141) continue;
 
 	for (int k = 0; k < arraysize; k++) {
-	if (k!=2) continue;
 
         for (unsigned int i = 0; i < HBHERecHitRBXid->size(); i++) {
 
@@ -467,7 +465,6 @@ int MaryamAnalysis(TString filelist = "TEST", bool addPU=false) {
 
 	    //cout<<"\npass threshold, RBX: "<<HBHERecHitRBXid->at(i)<<", HBHERecHitEnergyMethod0: "<<HBHERecHitEnergyMethod0->at(i)<<endl;
             if (isRecHitNoisy(C4, C5, h_RecHit_R45_P45) && (fabs(HBHERecHitIEta->at(i))!=28 && fabs(HBHERecHitIEta->at(i))!=29)) {
-	        cout<<"in the first loop over rechits, !!! bad rechit fired !!!"<<", k = "<<k<<endl;
 		//cout<<"RBXIndex: "<<RBXIndex<<endl;
                 RecHitNoisy_NRH[RBXIndex][k] += 1.0;
                 RecHitNoisy_ERH[RBXIndex][k] += HBHERecHitEnergyMethod0->at(i);
@@ -475,8 +472,8 @@ int MaryamAnalysis(TString filelist = "TEST", bool addPU=false) {
 	}
         }// i over channels
 
-        if(jentry == 735) cout<<"\nNm: "<<NRH[68][2]<<", Noisy Nm: "<<RecHitNoisy_NRH[68][2]<<", En: "<<ERH[68][2]<<", Noisy En: "<<RecHitNoisy_ERH[68][2]<<endl;
-        if(jentry == 1141) cout<<"\nNm: "<<NRH[48][2]<<", Noisy Nm: "<<RecHitNoisy_NRH[48][2]<<", En: "<<ERH[48][2]<<", Noisy En: "<<RecHitNoisy_ERH[48][2]<<endl;
+        //if(jentry == 735) cout<<"\nNm: "<<NRH[68][2]<<", Noisy Nm: "<<RecHitNoisy_NRH[68][2]<<", En: "<<ERH[68][2]<<", Noisy En: "<<RecHitNoisy_ERH[68][2]<<endl;
+        //if(jentry == 1141) cout<<"\nNm: "<<NRH[48][2]<<", Noisy Nm: "<<RecHitNoisy_NRH[48][2]<<", En: "<<ERH[48][2]<<", Noisy En: "<<RecHitNoisy_ERH[48][2]<<endl;
 /*
 	// calculate MET per event
 	for(unsigned int l = 0; l < 4; l++) {
@@ -568,7 +565,7 @@ int MaryamAnalysis(TString filelist = "TEST", bool addPU=false) {
 	if(!HasBadRBXR45Method0->at(0) && RBXR45Noise_EnergyGt50) cout<<"\n*** !! event "<<jentry<<", event: "<<event<<", run: "<<run<<" is recognized as NOISE by our R45 definition !! *** \n\n"<<endl;
 
 
-	//if((HasBadRBXRechitR45TightMethod0->at(0) && !RBXRechitR45Tight[2]) || (!HasBadRBXRechitR45TightMethod0->at(0) && RBXRechitR45Tight[2]) || (HasBadRBXRechitR45LooseMethod0->at(0) && !RBXRechitR45Loose[2]) || (!HasBadRBXRechitR45LooseMethod0->at(0) && RBXRechitR45Loose[2])) { 
+	if((HasBadRBXRechitR45TightMethod0->at(0) && !RBXRechitR45Tight[2]) || (!HasBadRBXRechitR45TightMethod0->at(0) && RBXRechitR45Tight[2]) || (HasBadRBXRechitR45LooseMethod0->at(0) && !RBXRechitR45Loose[2]) || (!HasBadRBXRechitR45LooseMethod0->at(0) && RBXRechitR45Loose[2])) { 
         for (unsigned int i = 0; i < HBHERecHitRBXid->size(); i++) {
 
 	//cout<<"*** conflict *** Now in the last loop over rechits..."<<endl;
@@ -591,13 +588,6 @@ int MaryamAnalysis(TString filelist = "TEST", bool addPU=false) {
 		cout<<"                     ^^^^^^^^^ Lower Limit: "<<LowerLimitRecHit(P45)<<endl;
 		cout<<"                     ^^^^^^^^^ Upper Limit: "<<UpperLimit(P45)<<endl;
             }
-		if(HBHERecHitEnergyMethod0->at(i)>2000){
-		double P45 = C4+C5;
-		double R45 = (C4-C5) / P45;
-		cout<<"\n                       R45: "<<R45<<endl;
-		cout<<"                     ^^^^^^^^^ Lower Limit: "<<LowerLimitRecHit(P45)<<endl;
-		cout<<"                     ^^^^^^^^^ Upper Limit: "<<UpperLimit(P45)<<endl;
-}
         }
         for (int i = 0; i < 72; i++) {
 
@@ -621,7 +611,7 @@ int MaryamAnalysis(TString filelist = "TEST", bool addPU=false) {
 		}
 	}
 
-	//}
+	}
 	if(HasBadRBXRechitR45TightMethod0->at(0) && RBXRechitR45Tight[2]) {
 		hpdHits[0]->Fill(HPDHits->at(0)); hpdNoHits[0]->Fill(HPDNoOtherHits->at(0));
 		//cout<<"\n*** !! event "<<jentry<<", event: "<<event<<", run: "<<run<<" !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! ***   "<<HPDHits->at(0)<<"\n\n"<<endl;
