@@ -297,10 +297,12 @@ int MaryamAnalysis(TString filelist = "TEST", bool addPU=false) {
 	inputfile.push_back("/dataLOCAL/dataLOCAL/HCAL/RootFiles/Schenara/data_Commissioning2014_HcalHPDNoise_70466B54_DA69_E411_91CF_02163E010DD6.root");
 */
 	// MET 
-        inputfile.push_back("/home/HCAL/data-Run2015A-MET-RAW-v1-248-038-00000-DA2F1ED8-0513-E511-BBE5-02163E01451E.root");
-        inputfile.push_back("/home/HCAL/data-Run2015B-MET-RAW-v1-251-252-00000-6E03DF13-E925-E511-8DD5-02163E0134D6.root");
-        inputfile.push_back("/home/HCAL/data-Run2015B-MET-RAW-v1-251-562-00000-C068C85C-6B28-E511-A828-02163E012787.root");
-        inputfile.push_back("/home/HCAL/data-Run2015B-MET-RAW-v1-251-168-00000-12E48CA8-2C25-E511-9631-02163E0136B4.root");
+        //inputfile.push_back("/cmsdata2/HCAL/data-Run2015A-MET-RAW-v1-248-038-00000-DA2F1ED8-0513-E511-BBE5-02163E01451E.root");
+        //inputfile.push_back("/cmsdata2/HCAL/data-Run2015B-MET-RAW-v1-251-252-00000-6E03DF13-E925-E511-8DD5-02163E0134D6.root");
+        //inputfile.push_back("/cmsdata2/HCAL/data-Run2015B-MET-RAW-v1-251-562-00000-C068C85C-6B28-E511-A828-02163E012787.root");
+        //inputfile.push_back("/cmsdata2/HCAL/data-Run2015B-MET-RAW-v1-251-168-00000-12E48CA8-2C25-E511-9631-02163E0136B4.root");
+        //inputfile.push_back("/cmsdata2/HCAL/data-Run2015C-MET-RAW-v1-000-254-790-00000-7250A24A-3F48-E511-9BCD-02163E0145A2.root");
+        inputfile.push_back("/cmsdata2/mzeinali/HCAL/Test.root");
 /*
 	// Jet
         inputfile.push_back("/home/HCAL/data-Run2015A-Jet-RAW-v1-246-963-00000-E24810A5-5B0A-E511-9906-02163E014646.root");
@@ -329,52 +331,42 @@ int MaryamAnalysis(TString filelist = "TEST", bool addPU=false) {
     unsigned int event = 0;
     unsigned int run = 0;
     std::vector<float> * HBHERecHitEnergy = 0;
-    std::vector<float> * HBHERecHitEnergyMethod0 = 0;
     std::vector<int> * HBHERecHitRBXid = 0;
     std::vector<int> * HBHERecHitIEta = 0;
     std::vector<int> * HBHERecHitIPhi = 0;
     std::vector<float> * HBHERecHitEta = 0;
     std::vector<float> * HBHERecHitPhi = 0;
     std::vector<float> * HBHERecHitDepth = 0;
-    std::vector< std::vector<float> > *HBHEDigiFC = 0;
-    std::vector< std::vector<float> > *HBHEDigiAllFC = 0;
-    std::vector< std::vector<float> > *HBHEDigiEnergy = 0;
-    std::vector<float> *HBHEDigiRecEnergy = 0;
-    std::vector<float> *HBHEDigiEta = 0;
+    std::vector< std::vector<double> > *HBHERecHitAuxFC = 0;
     std::vector<double> *RBXEnergy = 0;
-    std::vector<double> *RBXEnergy15Method0 = 0;
+    std::vector<double> *RBXEnergy15 = 0;
     std::vector< std::vector<double> > *RBXCharge = 0;
     std::vector<int>     *HPDHits = 0;
     std::vector<int>     *HPDNoOtherHits = 0;
-    std::vector<int>     *HasBadRBXR45Method0 = 0;
-    std::vector<int>     *HasBadRBXRechitR45LooseMethod0 = 0;
-    std::vector<int>     *HasBadRBXRechitR45TightMethod0 = 0;
+    std::vector<int>     *HasBadRBXR45 = 0;
+    std::vector<int>     *HasBadRBXRechitR45Loose = 0;
+    std::vector<int>     *HasBadRBXRechitR45Tight = 0;
     std::vector<double> *HBET = 0;
     std::vector<double> *HEET = 0;
 
     t->SetBranchAddress("event",&event);
     t->SetBranchAddress("run",&run);
     t->SetBranchAddress("HBHERecHitEnergy",&HBHERecHitEnergy);
-    t->SetBranchAddress("HBHERecHitEnergyMethod0",&HBHERecHitEnergyMethod0);
     t->SetBranchAddress("HBHERecHitRBXid",&HBHERecHitRBXid);
     t->SetBranchAddress("HBHERecHitIEta",&HBHERecHitIEta);
     t->SetBranchAddress("HBHERecHitIPhi",&HBHERecHitIPhi);
     t->SetBranchAddress("HBHERecHitEta",&HBHERecHitEta);
     t->SetBranchAddress("HBHERecHitPhi",&HBHERecHitPhi);
     t->SetBranchAddress("HBHERecHitDepth",&HBHERecHitDepth);
-    t->SetBranchAddress("HBHEDigiFC",&HBHEDigiFC);
-    t->SetBranchAddress("HBHEDigiAllFC",&HBHEDigiAllFC);
-    t->SetBranchAddress("HBHEDigiEnergy",&HBHEDigiEnergy);
-    t->SetBranchAddress("HBHEDigiRecEnergy",&HBHEDigiRecEnergy);
-    t->SetBranchAddress("HBHEDigiEta",&HBHEDigiEta);
+    t->SetBranchAddress("HBHERecHitAuxFC",&HBHERecHitAuxFC);
     t->SetBranchAddress("RBXEnergy",&RBXEnergy);
-    t->SetBranchAddress("RBXEnergy15Method0",&RBXEnergy15Method0);
+    t->SetBranchAddress("RBXEnergy15",&RBXEnergy15);
     t->SetBranchAddress("RBXCharge",&RBXCharge);
     t->SetBranchAddress("HPDHits",&HPDHits);
     t->SetBranchAddress("HPDNoOtherHits",&HPDNoOtherHits);
-    t->SetBranchAddress("HasBadRBXR45Method0",&HasBadRBXR45Method0);
-    t->SetBranchAddress("HasBadRBXRechitR45LooseMethod0",&HasBadRBXRechitR45LooseMethod0);
-    t->SetBranchAddress("HasBadRBXRechitR45TightMethod0",&HasBadRBXRechitR45TightMethod0);
+    t->SetBranchAddress("HasBadRBXR45",&HasBadRBXR45);
+    t->SetBranchAddress("HasBadRBXRechitR45Loose",&HasBadRBXRechitR45Loose);
+    t->SetBranchAddress("HasBadRBXRechitR45Tight",&HasBadRBXRechitR45Tight);
     t->SetBranchAddress("HBET",&HBET);
     t->SetBranchAddress("HEET",&HEET);
 
@@ -397,12 +389,29 @@ int MaryamAnalysis(TString filelist = "TEST", bool addPU=false) {
         double TS4RBX[72] = {};
         double TS5RBX[72] = {};
 
-	double TS4RBXall[72] = {};
-        double TS5RBXall[72] = {};
-
 	double MET[4] = {0};
 	double METx[4] = {0};
 	double METy[4] = {0};
+
+        for (unsigned int i = 0; i < HBHERecHitRBXid->size(); i++) {
+
+	    int RBXIndex = HBHERecHitRBXid->at(i);
+
+            TS4RBX[RBXIndex] = (*HBHERecHitAuxFC)[i][4];
+            TS5RBX[RBXIndex] = (*HBHERecHitAuxFC)[i][5];
+
+	}
+
+        for (int i = 0; i < 72; i++) {
+
+	    double chargeDiff_4 = (*RBXCharge)[i][4] - TS4RBX[i];
+	    double chargeDiff_5 = (*RBXCharge)[i][5] - TS5RBX[i];
+
+		cout<<"(*RBXCharge)["<<i<<"][4]: "<<(*RBXCharge)[i][4]<<", TS4RBX["<<i<<"]: "<<TS4RBX[i]<<endl;
+		cout<<"(*RBXCharge)["<<i<<"][5]: "<<(*RBXCharge)[i][5]<<", TS5RBX["<<i<<"]: "<<TS5RBX[i]<<endl;
+	    //if(fabs(chargeDiff_4)>0.001 || fabs(chargeDiff_5)>0.001) 
+		//cout<<"*** see difference ***"<<endl;
+         }
 
         // ========== LOOP OVER Channels ==========
 
@@ -411,7 +420,7 @@ int MaryamAnalysis(TString filelist = "TEST", bool addPU=false) {
 
         for (unsigned int i = 0; i < HBHERecHitRBXid->size(); i++) {
 
-	    if(!(HBHERecHitEnergyMethod0->at(i) > recHitEnThreshold[k])) continue;
+	    if(!(HBHERecHitEnergy->at(i) > recHitEnThreshold[k])) continue;
 
 	    int RBXIndex = HBHERecHitRBXid->at(i);
 /*
@@ -434,25 +443,17 @@ int MaryamAnalysis(TString filelist = "TEST", bool addPU=false) {
 	    //int RBXIndex = -10;		
 	    //RBXIndex = halilCode->EtaPhitoRBX(HBHERecHitIEta->at(i),HBHERecHitIPhi->at(i),HBHERecHitDepth->at(i));
 */
-            double C4 = (*HBHEDigiFC)[i][4];
-            double C5 = (*HBHEDigiFC)[i][5];
+            double C4 = (*HBHERecHitAuxFC)[i][4];
+            double C5 = (*HBHERecHitAuxFC)[i][5];
 
-	    TS4RBX[RBXIndex] += C4;
-	    TS5RBX[RBXIndex] += C5;
-/*
-            double C4all = (*HBHEDigiAllFC)[i][4];
-            double C5all = (*HBHEDigiAllFC)[i][5];
-
-            TS4RBXall[RBXIndex] += C4all;
-            TS5RBXall[RBXIndex] += C5all;
-*/
-	    //if(!(HBHERecHitEnergyMethod0->at(i) > 1.5)) continue;
+	    //
+	    //if(!(HBHERecHitEnergy->at(i) > 1.5)) continue;
 /*
 	    int ii_ps(0);
             for (int ii = 0; ii < 10; ii++) {
-                h_TEST_TS->Fill(ii, (*HBHEDigiFC)[i][ii]);
+                h_TEST_TS->Fill(ii, (*HBHERecHitAuxFC)[i][ii]);
                 if (i_ps < 10 && (C4 + C5) > 50) {
-                    h_PS_TS[i_ps]->Fill(ii, (*HBHEDigiFC)[i][ii]);
+                    h_PS_TS[i_ps]->Fill(ii, (*HBHERecHitAuxFC)[i][ii]);
                     ii_ps = 1;
                 }
             }
@@ -461,13 +462,13 @@ int MaryamAnalysis(TString filelist = "TEST", bool addPU=false) {
 */
 
             NRH[RBXIndex][k] += 1.0;
-            ERH[RBXIndex][k] += HBHERecHitEnergyMethod0->at(i);
+            ERH[RBXIndex][k] += HBHERecHitEnergy->at(i);
 
-	    //cout<<"\npass threshold, RBX: "<<HBHERecHitRBXid->at(i)<<", HBHERecHitEnergyMethod0: "<<HBHERecHitEnergyMethod0->at(i)<<endl;
+	    //cout<<"\npass threshold, RBX: "<<HBHERecHitRBXid->at(i)<<", HBHERecHitEnergy: "<<HBHERecHitEnergy->at(i)<<endl;
             if (isRecHitNoisy(C4, C5, h_RecHit_R45_P45) && (fabs(HBHERecHitIEta->at(i))!=28 && fabs(HBHERecHitIEta->at(i))!=29)) {
 		//cout<<"RBXIndex: "<<RBXIndex<<endl;
                 RecHitNoisy_NRH[RBXIndex][k] += 1.0;
-                RecHitNoisy_ERH[RBXIndex][k] += HBHERecHitEnergyMethod0->at(i);
+                RecHitNoisy_ERH[RBXIndex][k] += HBHERecHitEnergy->at(i);
             }
 	}
         }// i over channels
@@ -507,21 +508,21 @@ int MaryamAnalysis(TString filelist = "TEST", bool addPU=false) {
 				RBXRechitR45Loose[k] = true; 
 
 	}
-            if (isRBXNoisy((*RBXCharge)[i][4], (*RBXCharge)[i][5], h_RBX_R45_P45) && RBXEnergy15Method0->at(i) > 50) {
-	        //cout<<"\nRBXEnergy15Method0->at("<<i<<"): "<<RBXEnergy15Method0->at(i)<<", output of ntuple?? "<<HasBadRBXR45Method0->at(0)<<endl;
+            if (isRBXNoisy((*RBXCharge)[i][4], (*RBXCharge)[i][5], h_RBX_R45_P45) && RBXEnergy15->at(i) > 50) {
+	        //cout<<"\nRBXEnergy15->at("<<i<<"): "<<RBXEnergy15->at(i)<<", output of ntuple?? "<<HasBadRBXR45->at(0)<<endl;
 	    //if (isRBXNoisy(TS4RBXall[i], TS5RBXall[i], h_RBX_R45_P45))  // According to http://cmslxr.fnal.gov/lxr/source/RecoMET/METAlgorithms/src/HcalNoiseAlgo.cc?v=CMSSW_7_5_0_pre5#0020, it seems that instead of HBHEDigiFC, HBHEDigiAllFC is used.
 
 		RBXR45Noise_EnergyGt50 = true; // there is a cut on RBXEnergy according to http://cmslxr.fnal.gov/lxr/source/RecoMET/METAlgorithms/src/HcalNoiseAlgo.cc?v=CMSSW_7_5_0_pre5#0018
 
                 h_RBXNoisy_NoisyNmFr_NoisyEnFr->Fill(EnFr[2], NmFr[2]);
                 h_RBXNoisy_RBXPhi_RBXEta->Fill(RBX_X(i), RBX_Y(i));
-                h_RBXNoisy_En->Fill(RBXEnergy15Method0->at(i));
+                h_RBXNoisy_En->Fill(RBXEnergy15->at(i));
 	    
 	    } else {
 
                 h_RBXHealthy_NoisyNmFr_NoisyEnFr->Fill(EnFr[2], NmFr[2]);
                 h_RBXHealthy_RBXPhi_RBXEta->Fill(RBX_X(i), RBX_Y(i));
-                h_RBXHealthy_En->Fill(RBXEnergy15Method0->at(i));
+                h_RBXHealthy_En->Fill(RBXEnergy15->at(i));
 	    
 	    }
         }// i over RBX
@@ -529,9 +530,9 @@ int MaryamAnalysis(TString filelist = "TEST", bool addPU=false) {
 	if (RBXR45Noise_EnergyGt50 && RBXRechitR45Tight[2]) badEvt_tightTag++;
 	if (!RBXR45Noise_EnergyGt50 && !RBXRechitR45Tight[2]) goodEvt_notTag++;
  	 
-            h_RBXR45Noise_vs_HasBadRBXR45->Fill(HasBadRBXR45Method0->at(0),RBXR45Noise_EnergyGt50);
-            h_RBXRechitR45Loose_vs_HasBadRBXRechitR45Loose->Fill(HasBadRBXRechitR45LooseMethod0->at(0),RBXRechitR45Loose[2]);
-            h_RBXRechitR45Tight_vs_HasBadRBXRechitR45Tight->Fill(HasBadRBXRechitR45TightMethod0->at(0),RBXRechitR45Tight[2]);
+            h_RBXR45Noise_vs_HasBadRBXR45->Fill(HasBadRBXR45->at(0),RBXR45Noise_EnergyGt50);
+            h_RBXRechitR45Loose_vs_HasBadRBXRechitR45Loose->Fill(HasBadRBXRechitR45Loose->at(0),RBXRechitR45Loose[2]);
+            h_RBXRechitR45Tight_vs_HasBadRBXRechitR45Tight->Fill(HasBadRBXRechitR45Tight->at(0),RBXRechitR45Tight[2]);
 
 	for (int k = 0; k < arraysize; k++) {
 
@@ -546,10 +547,10 @@ int MaryamAnalysis(TString filelist = "TEST", bool addPU=false) {
 	else MET_healthyEvents->Fill(met);
 
 
-	if((HasBadRBXR45Method0->at(0) && !RBXR45Noise_EnergyGt50) || (!HasBadRBXR45Method0->at(0) && RBXR45Noise_EnergyGt50))
+	if((HasBadRBXR45->at(0) && !RBXR45Noise_EnergyGt50) || (!HasBadRBXR45->at(0) && RBXR45Noise_EnergyGt50))
 		for (int i = 0; i < 72; i++) {
-		if(RBXEnergy15Method0->at(i) > 50) {
-	        cout<<"\nRBXEnergy15Method0->at("<<i<<"): "<<RBXEnergy15Method0->at(i)<<endl;
+		if(RBXEnergy15->at(i) > 50) {
+	        cout<<"\nRBXEnergy15->at("<<i<<"): "<<RBXEnergy15->at(i)<<endl;
                 cout<<"(*RBXCharge)["<<i<<"][4]: "<<(*RBXCharge)[i][4]<<endl;
                 cout<<"(*RBXCharge)["<<i<<"][5]: "<<(*RBXCharge)[i][5]<<endl;
 		double P45 = (*RBXCharge)[i][4]+(*RBXCharge)[i][5];
@@ -561,26 +562,26 @@ int MaryamAnalysis(TString filelist = "TEST", bool addPU=false) {
 
 		}
 		}
-	if(HasBadRBXR45Method0->at(0) && !RBXR45Noise_EnergyGt50) cout<<"\n*** !! event "<<jentry<<", event: "<<event<<", run: "<<run<<" is NOT recognized as NOISE by our R45 definition !! *** \n\n"<<endl;
-	if(!HasBadRBXR45Method0->at(0) && RBXR45Noise_EnergyGt50) cout<<"\n*** !! event "<<jentry<<", event: "<<event<<", run: "<<run<<" is recognized as NOISE by our R45 definition !! *** \n\n"<<endl;
+	if(HasBadRBXR45->at(0) && !RBXR45Noise_EnergyGt50) cout<<"\n*** !! event "<<jentry<<", event: "<<event<<", run: "<<run<<" is NOT recognized as NOISE by our R45 definition !! *** \n\n"<<endl;
+	if(!HasBadRBXR45->at(0) && RBXR45Noise_EnergyGt50) cout<<"\n*** !! event "<<jentry<<", event: "<<event<<", run: "<<run<<" is recognized as NOISE by our R45 definition !! *** \n\n"<<endl;
 
 
-	if((HasBadRBXRechitR45TightMethod0->at(0) && !RBXRechitR45Tight[2]) || (!HasBadRBXRechitR45TightMethod0->at(0) && RBXRechitR45Tight[2]) || (HasBadRBXRechitR45LooseMethod0->at(0) && !RBXRechitR45Loose[2]) || (!HasBadRBXRechitR45LooseMethod0->at(0) && RBXRechitR45Loose[2])) { 
+	if((HasBadRBXRechitR45Tight->at(0) && !RBXRechitR45Tight[2]) || (!HasBadRBXRechitR45Tight->at(0) && RBXRechitR45Tight[2]) || (HasBadRBXRechitR45Loose->at(0) && !RBXRechitR45Loose[2]) || (!HasBadRBXRechitR45Loose->at(0) && RBXRechitR45Loose[2])) { 
         for (unsigned int i = 0; i < HBHERecHitRBXid->size(); i++) {
 
 	//cout<<"*** conflict *** Now in the last loop over rechits..."<<endl;
-            double C4 = (*HBHEDigiFC)[i][4];
-            double C5 = (*HBHEDigiFC)[i][5];
+            double C4 = (*HBHERecHitAuxFC)[i][4];
+            double C5 = (*HBHERecHitAuxFC)[i][5];
 
-	    if(!(HBHERecHitEnergyMethod0->at(i) > 5)) continue;
+	    if(!(HBHERecHitEnergy->at(i) > 5)) continue;
 	    cout<<"\nRecHitIEta: "<<HBHERecHitIEta->at(i)<<endl;
-	    cout<<"pass threshold, RBX: "<<HBHERecHitRBXid->at(i)<<", HBHERecHitEnergyMethod0: "<<HBHERecHitEnergyMethod0->at(i)<<endl;
+	    cout<<"pass threshold, RBX: "<<HBHERecHitRBXid->at(i)<<", HBHERecHitEnergy: "<<HBHERecHitEnergy->at(i)<<endl;
 
             if (isRecHitNoisy(C4, C5, h_RecHit_R45_P45) && (fabs(HBHERecHitIEta->at(i))!=28 && fabs(HBHERecHitIEta->at(i))!=29)) {
 	        //cout<<"*** conflict *** Now in the last loop over rechits, !!! bad rechit fired !!!"<<endl;
-	        cout<<"\nRBXEnergy15Method0->at("<<HBHERecHitRBXid->at(i)<<"): "<<RBXEnergy15Method0->at(HBHERecHitRBXid->at(i))<<endl;
-                cout<<"(*HBHEDigiFC)[i][4]: "<<C4<<endl;
-                cout<<"(*HBHEDigiFC)[i][5]: "<<C5<<endl;
+	        cout<<"\nRBXEnergy15->at("<<HBHERecHitRBXid->at(i)<<"): "<<RBXEnergy15->at(HBHERecHitRBXid->at(i))<<endl;
+                cout<<"(*HBHERecHitAuxFC)[i][4]: "<<C4<<endl;
+                cout<<"(*HBHERecHitAuxFC)[i][5]: "<<C5<<endl;
 		double P45 = C4+C5;
 		//if(P45 < 1) P45 = 1; // this is put because http://cmslxr.fnal.gov/lxr/source/RecoMET/METAlgorithms/src/HcalNoiseAlgo.cc?v=CMSSW_7_5_0_pre5#0022
 		double R45 = (C4-C5) / P45;
@@ -596,9 +597,9 @@ int MaryamAnalysis(TString filelist = "TEST", bool addPU=false) {
 
         if((NmFr!=0 || EnFr!=0) && (ERH[i][2] != 0 && NRH[i][2] != 0)) cout<<"\nNmFr: "<<NmFr<<", EnFr: "<<EnFr<<endl;
 
-		if(isRBXNoisy((*RBXCharge)[i][4], (*RBXCharge)[i][5], h_RBX_R45_P45) && RBXEnergy15Method0->at(i) > 50) {
+		if(isRBXNoisy((*RBXCharge)[i][4], (*RBXCharge)[i][5], h_RBX_R45_P45) && RBXEnergy15->at(i) > 50) {
 		cout<<"\n --------- RBX NOISY ---------"<<endl;
-	        cout<<"\nRBXEnergy15Method0->at("<<i<<"): "<<RBXEnergy15Method0->at(i)<<endl;
+	        cout<<"\nRBXEnergy15->at("<<i<<"): "<<RBXEnergy15->at(i)<<endl;
                 cout<<"(*RBXCharge)["<<i<<"][4]: "<<(*RBXCharge)[i][4]<<endl;
                 cout<<"(*RBXCharge)["<<i<<"][5]: "<<(*RBXCharge)[i][5]<<endl;
 		double P45 = (*RBXCharge)[i][4]+(*RBXCharge)[i][5];
@@ -612,27 +613,27 @@ int MaryamAnalysis(TString filelist = "TEST", bool addPU=false) {
 	}
 
 	}
-	if(HasBadRBXRechitR45TightMethod0->at(0) && RBXRechitR45Tight[2]) {
+	if(HasBadRBXRechitR45Tight->at(0) && RBXRechitR45Tight[2]) {
 		hpdHits[0]->Fill(HPDHits->at(0)); hpdNoHits[0]->Fill(HPDNoOtherHits->at(0));
 		//cout<<"\n*** !! event "<<jentry<<", event: "<<event<<", run: "<<run<<" !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! ***   "<<HPDHits->at(0)<<"\n\n"<<endl;
 	}
-	if(!HasBadRBXRechitR45TightMethod0->at(0) && !RBXRechitR45Tight[2]) {
+	if(!HasBadRBXRechitR45Tight->at(0) && !RBXRechitR45Tight[2]) {
 		hpdHits[1]->Fill(HPDHits->at(0)); hpdNoHits[1]->Fill(HPDNoOtherHits->at(0));
 		//cout<<"\n*** !! event "<<jentry<<", event: "<<event<<", run: "<<run<<" !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! ***   "<<HPDHits->at(0)<<"\n\n"<<endl;
 	}
-	if(HasBadRBXRechitR45TightMethod0->at(0) && !RBXRechitR45Tight[2]) {
+	if(HasBadRBXRechitR45Tight->at(0) && !RBXRechitR45Tight[2]) {
 		hpdHits[2]->Fill(HPDHits->at(0)); hpdNoHits[2]->Fill(HPDNoOtherHits->at(0));
 		cout<<"\n*** !! event "<<jentry<<", event: "<<event<<", run: "<<run<<" is NOT recognized as TIGHT NOISE by our R45 definition !! ***   "<<HPDHits->at(0)<<", "<<HPDNoOtherHits->at(0)<<"\n\n"<<endl;
 	}
-	if(HasBadRBXRechitR45LooseMethod0->at(0) && !RBXRechitR45Loose[2]) {
+	if(HasBadRBXRechitR45Loose->at(0) && !RBXRechitR45Loose[2]) {
 		hpdHits[3]->Fill(HPDHits->at(0)); hpdNoHits[3]->Fill(HPDNoOtherHits->at(0));
 		cout<<"\n*** !! event "<<jentry<<", event: "<<event<<", run: "<<run<<" is NOT recognized as LOOSE NOISE by our R45 definition !! ***   "<<HPDHits->at(0)<<", "<<HPDNoOtherHits->at(0)<<"\n\n"<<endl;
 	}
-	if(!HasBadRBXRechitR45TightMethod0->at(0) && RBXRechitR45Tight[2]) {
+	if(!HasBadRBXRechitR45Tight->at(0) && RBXRechitR45Tight[2]) {
 		hpdHits[4]->Fill(HPDHits->at(0)); hpdNoHits[4]->Fill(HPDNoOtherHits->at(0));
 		cout<<"\n*** !! event "<<jentry<<", event: "<<event<<", run: "<<run<<" is recognized as TIGHT NOISE by our R45 definition !! ***   "<<HPDHits->at(0)<<", "<<HPDNoOtherHits->at(0)<<"\n\n"<<endl;
 	}
-	if(!HasBadRBXRechitR45LooseMethod0->at(0) && RBXRechitR45Loose[2]) {
+	if(!HasBadRBXRechitR45Loose->at(0) && RBXRechitR45Loose[2]) {
 		hpdHits[5]->Fill(HPDHits->at(0)); hpdNoHits[5]->Fill(HPDNoOtherHits->at(0));
 		cout<<"\n*** !! event "<<jentry<<", event: "<<event<<", run: "<<run<<" is recognized as LOOSE NOISE by our R45 definition !! ***   "<<HPDHits->at(0)<<", "<<HPDNoOtherHits->at(0)<<"\n\n"<<endl;
 	}
