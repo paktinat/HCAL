@@ -325,22 +325,24 @@ int MaryamAnalysis(TString filelist = "TEST", bool addPU=false) {
 
 
     // ========== B E G I N ==========
-    Long64_t nentries = t->GetEntries();
-    //Long64_t nentries = 100;
+    //Long64_t nentries = t->GetEntries();
+    Long64_t nentries = 10;
 
     unsigned int event = 0;
     unsigned int run = 0;
-    std::vector<float> * HBHERecHitEnergy = 0;
+    std::vector<double> * HBHERecHitEnergyRaw = 0;
     std::vector<int> * HBHERecHitRBXid = 0;
     std::vector<int> * HBHERecHitIEta = 0;
     std::vector<int> * HBHERecHitIPhi = 0;
     std::vector<float> * HBHERecHitEta = 0;
     std::vector<float> * HBHERecHitPhi = 0;
     std::vector<float> * HBHERecHitDepth = 0;
+    std::vector<int> * HBHERecHitFlags = 0;
     std::vector< std::vector<double> > *HBHERecHitAuxFC = 0;
     std::vector<double> *RBXEnergy = 0;
     std::vector<double> *RBXEnergy15 = 0;
     std::vector< std::vector<double> > *RBXCharge = 0;
+    std::vector< std::vector<double> > *RBXCharge15 = 0;
     std::vector<int>     *HPDHits = 0;
     std::vector<int>     *HPDNoOtherHits = 0;
     std::vector<int>     *HasBadRBXR45 = 0;
@@ -351,17 +353,19 @@ int MaryamAnalysis(TString filelist = "TEST", bool addPU=false) {
 
     t->SetBranchAddress("event",&event);
     t->SetBranchAddress("run",&run);
-    t->SetBranchAddress("HBHERecHitEnergy",&HBHERecHitEnergy);
+    t->SetBranchAddress("HBHERecHitEnergyRaw",&HBHERecHitEnergyRaw);
     t->SetBranchAddress("HBHERecHitRBXid",&HBHERecHitRBXid);
     t->SetBranchAddress("HBHERecHitIEta",&HBHERecHitIEta);
     t->SetBranchAddress("HBHERecHitIPhi",&HBHERecHitIPhi);
     t->SetBranchAddress("HBHERecHitEta",&HBHERecHitEta);
     t->SetBranchAddress("HBHERecHitPhi",&HBHERecHitPhi);
     t->SetBranchAddress("HBHERecHitDepth",&HBHERecHitDepth);
+    t->SetBranchAddress("HBHERecHitFlags",&HBHERecHitFlags);
     t->SetBranchAddress("HBHERecHitAuxFC",&HBHERecHitAuxFC);
     t->SetBranchAddress("RBXEnergy",&RBXEnergy);
     t->SetBranchAddress("RBXEnergy15",&RBXEnergy15);
     t->SetBranchAddress("RBXCharge",&RBXCharge);
+    t->SetBranchAddress("RBXCharge15",&RBXCharge15);
     t->SetBranchAddress("HPDHits",&HPDHits);
     t->SetBranchAddress("HPDNoOtherHits",&HPDNoOtherHits);
     t->SetBranchAddress("HasBadRBXR45",&HasBadRBXR45);
@@ -393,12 +397,23 @@ int MaryamAnalysis(TString filelist = "TEST", bool addPU=false) {
 	double METx[4] = {0};
 	double METy[4] = {0};
 
+	cout<<"\nHBHERecHitFlags->size(): "<<HBHERecHitFlags->size()<<endl;
+	cout<<"HBHERecHitRBXid->size(): "<<HBHERecHitRBXid->size()<<endl;
+
+        for (unsigned int i = 0; i < HBHERecHitFlags->size(); i++) {
+	if(fabs(HBHERecHitIEta->at(i))==28 || fabs(HBHERecHitIEta->at(i))==29) continue;
+        if(!(HBHERecHitEnergyRaw->at(i) > 5.)) continue;
+	int bitval = HBHERecHitFlags->at(i)>>15;
+	int outval = bitval & 1;
+	cout<<"	HBHERecHitFlags->at("<<i<<"): "<<outval<<", raw energy: "<<HBHERecHitEnergyRaw->at(i)<<", IEta: "<<HBHERecHitIEta->at(i)<<endl;
+	}
         for (unsigned int i = 0; i < HBHERecHitRBXid->size(); i++) {
 
 	    int RBXIndex = HBHERecHitRBXid->at(i);
+	    //if(!(HBHERecHitEnergyRaw->at(i)>1.5)) continue;
 
-            TS4RBX[RBXIndex] = (*HBHERecHitAuxFC)[i][4];
-            TS5RBX[RBXIndex] = (*HBHERecHitAuxFC)[i][5];
+            TS4RBX[RBXIndex] += (*HBHERecHitAuxFC)[i][4];
+            TS5RBX[RBXIndex] += (*HBHERecHitAuxFC)[i][5];
 
 	}
 
@@ -407,37 +422,37 @@ int MaryamAnalysis(TString filelist = "TEST", bool addPU=false) {
 	    double chargeDiff_4 = (*RBXCharge)[i][4] - TS4RBX[i];
 	    double chargeDiff_5 = (*RBXCharge)[i][5] - TS5RBX[i];
 
-		cout<<"(*RBXCharge)["<<i<<"][4]: "<<(*RBXCharge)[i][4]<<", TS4RBX["<<i<<"]: "<<TS4RBX[i]<<endl;
-		cout<<"(*RBXCharge)["<<i<<"][5]: "<<(*RBXCharge)[i][5]<<", TS5RBX["<<i<<"]: "<<TS5RBX[i]<<endl;
-	    //if(fabs(chargeDiff_4)>0.001 || fabs(chargeDiff_5)>0.001) 
-		//cout<<"*** see difference ***"<<endl;
+		//cout<<"(*RBXCharge)["<<i<<"][4]: "<<(*RBXCharge)[i][4]<<", TS4RBX["<<i<<"]: "<<TS4RBX[i]<<endl;
+		//cout<<"(*RBXCharge)["<<i<<"][5]: "<<(*RBXCharge)[i][5]<<", TS5RBX["<<i<<"]: "<<TS5RBX[i]<<endl;
+	    if(fabs(chargeDiff_4)>0.001 || fabs(chargeDiff_5)>0.001) 
+		cout<<"*** see difference ***"<<endl;
          }
 
         // ========== LOOP OVER Channels ==========
 
 
 	for (int k = 0; k < arraysize; k++) {
-
+	if(k != 2) continue;
         for (unsigned int i = 0; i < HBHERecHitRBXid->size(); i++) {
 
-	    if(!(HBHERecHitEnergy->at(i) > recHitEnThreshold[k])) continue;
+	    if(!(HBHERecHitEnergyRaw->at(i) > recHitEnThreshold[k])) continue;
 
 	    int RBXIndex = HBHERecHitRBXid->at(i);
 /*
-	    METx[0] += sin(HBHERecHitPhi->at(i))*HBHERecHitEnergy->at(i)/cosh(HBHERecHitEta->at(i));
-	    METy[0] += cos(HBHERecHitPhi->at(i))*HBHERecHitEnergy->at(i)/cosh(HBHERecHitEta->at(i));
+	    METx[0] += sin(HBHERecHitPhi->at(i))*HBHERecHitEnergyRaw->at(i)/cosh(HBHERecHitEta->at(i));
+	    METy[0] += cos(HBHERecHitPhi->at(i))*HBHERecHitEnergyRaw->at(i)/cosh(HBHERecHitEta->at(i));
 
-	    if(HBHERecHitEnergy->at(i) > 1.5) {
-		METx[1] += sin(HBHERecHitPhi->at(i))*HBHERecHitEnergy->at(i)/cosh(HBHERecHitEta->at(i));	    
-		METy[1] += cos(HBHERecHitPhi->at(i))*HBHERecHitEnergy->at(i)/cosh(HBHERecHitEta->at(i));
+	    if(HBHERecHitEnergyRaw->at(i) > 1.5) {
+		METx[1] += sin(HBHERecHitPhi->at(i))*HBHERecHitEnergyRaw->at(i)/cosh(HBHERecHitEta->at(i));	    
+		METy[1] += cos(HBHERecHitPhi->at(i))*HBHERecHitEnergyRaw->at(i)/cosh(HBHERecHitEta->at(i));
             }
-	    if(HBHERecHitEnergy->at(i) > 3) {
-		METx[2] += sin(HBHERecHitPhi->at(i))*HBHERecHitEnergy->at(i)/cosh(HBHERecHitEta->at(i));	    
-		METy[2] += cos(HBHERecHitPhi->at(i))*HBHERecHitEnergy->at(i)/cosh(HBHERecHitEta->at(i));
+	    if(HBHERecHitEnergyRaw->at(i) > 3) {
+		METx[2] += sin(HBHERecHitPhi->at(i))*HBHERecHitEnergyRaw->at(i)/cosh(HBHERecHitEta->at(i));	    
+		METy[2] += cos(HBHERecHitPhi->at(i))*HBHERecHitEnergyRaw->at(i)/cosh(HBHERecHitEta->at(i));
             }
-	    if(HBHERecHitEnergy->at(i) > 5) {
-		METx[3] += sin(HBHERecHitPhi->at(i))*HBHERecHitEnergy->at(i)/cosh(HBHERecHitEta->at(i));	    
-		METy[3] += cos(HBHERecHitPhi->at(i))*HBHERecHitEnergy->at(i)/cosh(HBHERecHitEta->at(i));
+	    if(HBHERecHitEnergyRaw->at(i) > 5) {
+		METx[3] += sin(HBHERecHitPhi->at(i))*HBHERecHitEnergyRaw->at(i)/cosh(HBHERecHitEta->at(i));	    
+		METy[3] += cos(HBHERecHitPhi->at(i))*HBHERecHitEnergyRaw->at(i)/cosh(HBHERecHitEta->at(i));
             }
 
 	    //int RBXIndex = -10;		
@@ -447,7 +462,7 @@ int MaryamAnalysis(TString filelist = "TEST", bool addPU=false) {
             double C5 = (*HBHERecHitAuxFC)[i][5];
 
 	    //
-	    //if(!(HBHERecHitEnergy->at(i) > 1.5)) continue;
+	    //if(!(HBHERecHitEnergyRaw->at(i) > 1.5)) continue;
 /*
 	    int ii_ps(0);
             for (int ii = 0; ii < 10; ii++) {
@@ -462,13 +477,14 @@ int MaryamAnalysis(TString filelist = "TEST", bool addPU=false) {
 */
 
             NRH[RBXIndex][k] += 1.0;
-            ERH[RBXIndex][k] += HBHERecHitEnergy->at(i);
+            ERH[RBXIndex][k] += HBHERecHitEnergyRaw->at(i);
 
-	    //cout<<"\npass threshold, RBX: "<<HBHERecHitRBXid->at(i)<<", HBHERecHitEnergy: "<<HBHERecHitEnergy->at(i)<<endl;
+	    //cout<<"\npass threshold, RBX: "<<HBHERecHitRBXid->at(i)<<", HBHERecHitEnergyRaw: "<<HBHERecHitEnergyRaw->at(i)<<endl;
             if (isRecHitNoisy(C4, C5, h_RecHit_R45_P45) && (fabs(HBHERecHitIEta->at(i))!=28 && fabs(HBHERecHitIEta->at(i))!=29)) {
+		cout<<i<<" *** RecHitNoisy fired ***, energy: "<<HBHERecHitEnergyRaw->at(i)<<endl;
 		//cout<<"RBXIndex: "<<RBXIndex<<endl;
                 RecHitNoisy_NRH[RBXIndex][k] += 1.0;
-                RecHitNoisy_ERH[RBXIndex][k] += HBHERecHitEnergy->at(i);
+                RecHitNoisy_ERH[RBXIndex][k] += HBHERecHitEnergyRaw->at(i);
             }
 	}
         }// i over channels
@@ -546,7 +562,7 @@ int MaryamAnalysis(TString filelist = "TEST", bool addPU=false) {
 	if(RBXR45Noise_EnergyGt50) MET_RBXR45Noise->Fill(met);
 	else MET_healthyEvents->Fill(met);
 
-
+/*
 	if((HasBadRBXR45->at(0) && !RBXR45Noise_EnergyGt50) || (!HasBadRBXR45->at(0) && RBXR45Noise_EnergyGt50))
 		for (int i = 0; i < 72; i++) {
 		if(RBXEnergy15->at(i) > 50) {
@@ -573,9 +589,9 @@ int MaryamAnalysis(TString filelist = "TEST", bool addPU=false) {
             double C4 = (*HBHERecHitAuxFC)[i][4];
             double C5 = (*HBHERecHitAuxFC)[i][5];
 
-	    if(!(HBHERecHitEnergy->at(i) > 5)) continue;
+	    if(!(HBHERecHitEnergyRaw->at(i) > 5)) continue;
 	    cout<<"\nRecHitIEta: "<<HBHERecHitIEta->at(i)<<endl;
-	    cout<<"pass threshold, RBX: "<<HBHERecHitRBXid->at(i)<<", HBHERecHitEnergy: "<<HBHERecHitEnergy->at(i)<<endl;
+	    cout<<"pass threshold, RBX: "<<HBHERecHitRBXid->at(i)<<", HBHERecHitEnergyRaw: "<<HBHERecHitEnergyRaw->at(i)<<endl;
 
             if (isRecHitNoisy(C4, C5, h_RecHit_R45_P45) && (fabs(HBHERecHitIEta->at(i))!=28 && fabs(HBHERecHitIEta->at(i))!=29)) {
 	        //cout<<"*** conflict *** Now in the last loop over rechits, !!! bad rechit fired !!!"<<endl;
@@ -637,6 +653,7 @@ int MaryamAnalysis(TString filelist = "TEST", bool addPU=false) {
 		hpdHits[5]->Fill(HPDHits->at(0)); hpdNoHits[5]->Fill(HPDNoOtherHits->at(0));
 		cout<<"\n*** !! event "<<jentry<<", event: "<<event<<", run: "<<run<<" is recognized as LOOSE NOISE by our R45 definition !! ***   "<<HPDHits->at(0)<<", "<<HPDNoOtherHits->at(0)<<"\n\n"<<endl;
 	}
+*/
 
     }//jentry	
 }
