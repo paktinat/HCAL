@@ -8,85 +8,7 @@
   gStyle->SetStatH(0.35);
   gStyle->SetStatW(0.25);
 
-  TFile fa("res_met.root");
-  //TFile fa("res_jet.root");
-  //TFile fa("res_jetht.root");
-
- //--- 0 ---
- can0 = new TCanvas("RES0");
-
- gPad->SetLogy();
- MET_loose1p5->SetTitle("Missing Transverse Energy");
- MET_loose1p5->GetXaxis()->SetTitle("MET");
- MET_loose1p5->GetYaxis()->SetTitle("Events (pass LOOSE WP)");
- MET_loose1p5->SetLineColor(kBlack); 
- MET_loose1p5->SetLineWidth(2); 
- MET_loose1p5->Draw();
- MET_loose2p5->SetLineColor(kRed); 
- MET_loose2p5->SetLineWidth(2); 
- MET_loose2p5->SetLineStyle(9); 
- MET_loose2p5->Draw("same");
- MET_loose5->SetLineColor(kGreen); 
- MET_loose5->SetLineWidth(2); 
- MET_loose5->SetLineStyle(7); 
- MET_loose5->Draw("same");
- MET_loose7p5->SetLineColor(kBlue); 
- MET_loose7p5->SetLineWidth(2); 
- MET_loose7p5->SetLineStyle(5); 
- MET_loose7p5->Draw("same");
- MET_loose10->SetLineColor(kOrange); 
- MET_loose10->SetLineWidth(2); 
- MET_loose10->SetLineStyle(3); 
- MET_loose10->Draw("same");
-
- L1 = new TLegend(.6, .6, .89, .89);
- L1->SetBorderSize(0);
- L1->SetFillColor(0);
- L1->SetTextSize(0.08);
- L1->AddEntry(MET_loose1p5,"#varepsilon_{RecHit} > 1.5","L");
- L1->AddEntry(MET_loose2p5,"#varepsilon_{RecHit} > 2.5","L");
- L1->AddEntry(MET_loose5,"#varepsilon_{RecHit} > 5","L");
- L1->AddEntry(MET_loose7p5,"#varepsilon_{RecHit} > 7.5","L");
- L1->AddEntry(MET_loose10,"#varepsilon_{RecHit} > 10","L");
- L1->Draw("same");
-
- //--- 1 ---
- can1 = new TCanvas("RES1");
-
- gPad->SetLogy();
- MET_tight1p5->SetTitle("Missing Transverse Energy");
- MET_tight1p5->GetXaxis()->SetTitle("MET");
- MET_tight1p5->GetYaxis()->SetTitle("Events (pass TIGHT WP)");
- MET_tight1p5->SetLineColor(kBlack); 
- MET_tight1p5->SetLineWidth(2); 
- MET_tight1p5->Draw();
- MET_tight2p5->SetLineColor(kRed); 
- MET_tight2p5->SetLineWidth(2); 
- MET_tight2p5->SetLineStyle(9); 
- MET_tight2p5->Draw("same");
- MET_tight5->SetLineColor(kGreen); 
- MET_tight5->SetLineWidth(2); 
- MET_tight5->SetLineStyle(7); 
- MET_tight5->Draw("same");
- MET_tight7p5->SetLineColor(kBlue); 
- MET_tight7p5->SetLineWidth(2); 
- MET_tight7p5->SetLineStyle(5); 
- MET_tight7p5->Draw("same");
- MET_tight10->SetLineColor(kOrange); 
- MET_tight10->SetLineWidth(2); 
- MET_tight10->SetLineStyle(3); 
- MET_tight10->Draw("same");
-
- L1 = new TLegend(.6, .6, .89, .89);
- L1->SetBorderSize(0);
- L1->SetFillColor(0);
- L1->SetTextSize(0.08);
- L1->AddEntry(MET_tight1p5,"#varepsilon_{RecHit} > 1.5","L");
- L1->AddEntry(MET_tight2p5,"#varepsilon_{RecHit} > 2.5","L");
- L1->AddEntry(MET_tight5,"#varepsilon_{RecHit} > 5","L");
- L1->AddEntry(MET_tight7p5,"#varepsilon_{RecHit} > 7.5","L");
- L1->AddEntry(MET_tight10,"#varepsilon_{RecHit} > 10","L");
- L1->Draw("same");
+  TFile fa("res_test.root");
 
  //--- 2 ---
  can2 = new TCanvas("RES2");
@@ -174,10 +96,10 @@
  RBXHealthy_En->SetTitle("RBX Energy");
  RBXHealthy_En->GetXaxis()->SetTitle("RBXEnergy15Method0");
  RBXHealthy_En->GetYaxis()->SetTitle("per RBX pre Event");
- RBXHealthy_En->SetLineColor(kBlue); 
+ RBXHealthy_En->SetLineColor(4); 
  RBXHealthy_En->SetLineWidth(2); 
  RBXHealthy_En->Draw();
- RBXNoisy_En->SetLineColor(kRed); 
+ RBXNoisy_En->SetLineColor(2); 
  RBXNoisy_En->SetLineWidth(2); 
  RBXNoisy_En->SetLineStyle(7); 
  RBXNoisy_En->Draw("same");
@@ -224,10 +146,10 @@
  MET_healthyEvents->SetTitle("Missing Transverse Energy");
  MET_healthyEvents->GetXaxis()->SetTitle("MET");
  MET_healthyEvents->GetYaxis()->SetTitle("Events");
- MET_healthyEvents->SetLineColor(kBlue); 
+ MET_healthyEvents->SetLineColor(4); 
  MET_healthyEvents->SetLineWidth(2); 
  MET_healthyEvents->Draw();
- MET_RBXR45Noise->SetLineColor(kRed); 
+ MET_RBXR45Noise->SetLineColor(2); 
  MET_RBXR45Noise->SetLineWidth(2); 
  MET_RBXR45Noise->SetLineStyle(7); 
  MET_RBXR45Noise->Draw("same");
